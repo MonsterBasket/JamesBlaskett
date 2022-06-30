@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>James Blaskett</title>
-    <nav><a href="blog.html" title="The things I say">Blog</a></nav>
+    <nav>
+        <a href="blog.html" target="mainFrame" title="The things I say">Blog</a>
+        <a href="#test" target="mainFrame" title="Wasting time!">This is bad</a>
+    </nav>
 </head>
 <body>
     <h1>James Montero-Blaskett</h1>
-    <p>This is where I start typing things about me.  But not a blog, that goes on the blog page.</p>
+    <p id="test">This is one layout option, (not loading this page into the iFrame
+        on the same page though, that's terrible) use this as the master page
+        and then load the links directly into the iFrame.  Doing it this way
+        means you could decorate the crap out of the main page, then use basic
+        content for any other pages.  It WOULD mean that scrolling would get
+        weird on screens that are too small though.
+    </p>
+        <iframe name="mainFrame" src="#test">This won't show up, there are complicated
+            ways to display default content, but it's definitely best to just have
+            a valid source url or file to put into the iFrame.
+        </iframe>
 </body>
 </html>
