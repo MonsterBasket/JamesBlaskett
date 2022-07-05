@@ -6,55 +6,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>James Blaskett</title>
+    <script>
+        function redTrailAddDiv(){
+            let newDiv;
+            const container = document.getElementById("redContainer");
+            for(let i=0; i<400; i++){ //square root of the rows/columns
+                newDiv = document.createElement("div");
+                container.append(newDiv);
+            }
+            console.log("hello");
+        }
+    </script>
     <style>
-        iframe{
-            position: sticky;
-            right: 10px;
-            top: 100px;
-        }
-        iframe:hover{
-            width: 50%;
-        }
         body{
-            height: 400vh;
+            height: 560vh;
         }
+
+/*---------------- Start Stickies -----------------*/
+
         .stickies{
             position: absolute;
-            left: 300px;
-            top: 0px;
-            width: 500px;
+            left: 25%;
+            top: 150vh;
+            width: 50%;
+            height: 500px;
         }
         .stickies div{
-            background: linear-gradient(red, pink, green, yellow, purple, blue);
-            top: 0px;
-            box-shadow: 0px 50px 50px 50px blue;
+            top: 100px; /* wherever you want it to stop (must be the same or higher than .stickies top) */
+            width: 100%;
         }
-        .t1, .t3{
+        .sliderContainer1, .sliderContainer2, .sliderContainer3{
             position:absolute;
+            overflow: show;
         }
-        .t2, .t4, .t5{ /* t5 won't stick because it has no parent, but this helps clarify which ones are visible */
+        .slider1, .slider2, .slider3{
             position: sticky;
+            height: 550px; /* 10% higher than .stickies for the gradient, but can't do 110% because it's a grandchild */
+            background: linear-gradient(red, blue 85%, rgba(0, 0, 255, 0) 100%);
         }
-        .t1{
-            height: 200vh;
-            width: 300px;
+        div.slider1{
+
         }
-        .t2{
-            height: 100vh;
-            width: 300px;
+        div.slider2{
+            background:url(./images/treeRoad.jpg);
+            background-size: 100%;
         }
-        .t3{
-            height: 300vh;
-            width: 500px;
+        div.slider3{
+            background:url(./images/treeRoad.jpg);
         }
-        .t4{
-            height: 100vh;
-            width: 500px;
+        .sliderContainer1{
+            height: 140%; /* 140% per container to make each section stay put for just a little bit of extra scroll */
         }
-        .t5{
-            height: 100vh;
-            width: 100px;
+        .sliderContainer2{
+            height: 280%; /* 280vh */
         }
+        .sliderContainer3{
+            height: 420%; /* 420vh */
+        }
+
+/*------------- end stickies ----------------*/
+/*------------ start redtrail ---------------*/
+
+        #redContainer{
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(20,1fr);
+            grid-template-rows: repeat(20,1fr);
+            overflow: hidden;
+        }
+        #redContainer div{
+            width: 100%;
+            height: 100%;
+            margin: 0%;
+            z-index: 0;
+            background-color: purple;
+            transition: margin 10s, z-index 10s,
+                     background-color 10s, border-radius 0s 10s;
+        }
+        #redContainer div:hover{
+            margin: -20%;
+            z-index: 10;
+            border-radius:50%;
+            background-color: rgba(128, 0, 128, 0);
+            transition: margin 0s, z-index 0s,
+                     background-color 0s, border-radius 0s;
+        }
+/*------------ end redtrail -----------------*/
 
     </style>
 </head>
@@ -85,13 +123,24 @@
             a valid source url or file to put into the iFrame.
         </iframe>
     </div>
-    <div class="parent">
         <div class="stickies">
-            <div class="t3"><div class="t4"></div></div>
-            <div class="t1"><div class="t2"></div></div>
-            <div class="t5"></div>
+            <div class="sliderContainer3"><div class="slider3">
+
+
+
+            </div></div>
+            <div class="sliderContainer2"><div class="slider2">
+
+                <div id="redContainer"></div>
+                <script>redTrailAddDiv();</script>
+
+            </div></div>
+            <div class="sliderContainer1"><div class="slider1">
+                content <br>content <br>content <br>content <br>
+            
+            
+            </div></div>
         </div>
-    </div>
     
     <article>Could also try a vertical carousel for the below perhaps?</article>
     <article>
