@@ -66,7 +66,7 @@
 
 /*------------- end stickies ----------------*/
 /*------------ start redtrail ---------------*/
-
+        
         #redContainer{
             width: 100%;
             height: 100%;
@@ -75,22 +75,45 @@
             grid-template-rows: repeat(20,1fr);
             overflow: hidden;
         }
-        #redContainer div{
+        #redSibling{
+            position: absolute;
+            top: 0px;
+            color: white;
+            text-align: center;
+            font-size: 4em;
+        }
+        #redSibling{
+            animation: plsWait 15s forwards;
+        }
+        #redContainer div, #redContainer article{
             width: 100%;
             height: 100%;
             margin: 0%;
             z-index: 0;
             background-color: purple;
-            transition: margin 10s, z-index 10s,
-                     background-color 10s, border-radius 0s 10s;
         }
-        #redContainer div:hover{
-            margin: -20%;
-            z-index: 10;
-            border-radius:50%;
-            background-color: rgba(128, 0, 128, 0);
-            transition: margin 0s, z-index 0s,
-                     background-color 0s, border-radius 0s;
+        @keyframes plsWait{  /*just putting a cover over the interactive divs while the initial animation plays */
+            0%      {z-index: 2; opacity: 1;}
+            80%     {color: white;}
+            90%     {z-index: 2; opacity: 1; color: purple;}
+            100%    {z-index: -100; opacity: 0;}
+        }
+        @keyframes fade {
+            0%      { background-color: purple;  opacity: 1; z-index: -100; margin: 0%;   transform: translate(0%,  0%); border-radius: 20%;}
+            10%     { background-color: hotpink; opacity: 0;                margin: -50%; transform: translate(50%,50%); border-radius: 50%;}
+            40%     { background-color: purple;              z-index: 1;}
+            100%    {                              opacity: 1;                margin: 0%;   transform: translate(0%,  0%); border-radius: 0%;}
+        }
+        @keyframes trigger { /* instantly puts the div to the back to trigger the standard animation */
+            0%      { z-index: 0;}   /*That means I can have an "on hover" animation even if the mouse */
+            100%    { z-index: -100;}   /*leaves the div, rather than having to keep the mouse on top while the animation plays */
+        }
+
+        #redContainer div{
+        animation: fade 15s forwards;
+        }
+        #redContainer div:hover {
+        animation: trigger 0s forwards;
         }
 /*------------ end redtrail -----------------*/
 
@@ -103,11 +126,7 @@
         <br>Actually don't think I need a nav panel, can shrink the main page down to something small where everything is easily accessible
     </nav>
     <h1>James Montero-Blaskett</h1>
-    <article> Big 'ol picture of me I guess
-        <p>
-            Can do my red trail over an image.  Instead of changing to red on hover, change to 0 opacity.
-        </p>
-    </article>
+    <article> Big 'ol picture of me I guess</article>
     <p id="test">This is where I write a bit about who I am as a person, just
         a brief intro and background, nothing too fancy.<br><br>
         Also, this is one layout option, (not loading this page into the iFrame
@@ -123,33 +142,41 @@
             a valid source url or file to put into the iFrame.
         </iframe>
     </div>
-        <div class="stickies">
-            <div class="sliderContainer3"><div class="slider3">
 
 
+    <!------------  Stickies, remember that these go from bottom to top!  ------------>
+    <div class="stickies">
+        <div class="sliderContainer3"><div class="slider3">
 
-            </div></div>
-            <div class="sliderContainer2"><div class="slider2">
+        
 
-                <div id="redContainer"></div>
-                <script>redTrailAddDiv();</script>
+        </div></div>
+        <div class="sliderContainer2"><div class="slider2">
 
-            </div></div>
-            <div class="sliderContainer1"><div class="slider1">
-                content <br>content <br>content <br>content <br>
-            
-            
-            </div></div>
-        </div>
+            <div id="redContainer">
+                    <article id="redSibling">Please Wait...</article>
+            </div>
+
+            <script>redTrailAddDiv();</script>
+
+        </div></div>
+        <div class="sliderContainer1"><div class="slider1">
+
+            <article>
+                Could also try a vertical carousel for the below perhaps?<br>
+                Buuuut maybe I've put enough work into the stickies and red trail now...
+            </article>
+            <article>
+                Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
+                Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
+            </article>
+
+        
+        </div></div>
+    </div>
     
-    <article>Could also try a vertical carousel for the below perhaps?</article>
-    <article>
-        Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
-        Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
-    </article>
-    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
-    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
-    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
+
+
     <details>
         Looking to work with people, not just for them.  
     </details><br>
