@@ -4,25 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>James Blaskett</title>
+    <style>
+        iframe{
+            position: sticky;
+            right: 10px;
+            top: 100px;
+        }
+        iframe:hover{
+            width: 50%;
+        }
+        body{
+            height: 400vh;
+        }
+        .stickies{
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            width: 500px;
+        }
+        .stickies div{
+            background: linear-gradient(red, pink, green, yellow, purple, blue);
+            top: 0px;
+            box-shadow: 0px 50px 50px 50px blue;
+        }
+        .t1, .t3{
+            position:absolute;
+        }
+        .t2, .t4, .t5{ /* t5 won't stick because it has no parent, but this helps clarify which ones are visible */
+            position: sticky;
+        }
+        .t1{
+            height: 200vh;
+            width: 300px;
+        }
+        .t2{
+            height: 100vh;
+            width: 300px;
+        }
+        .t3{
+            height: 300vh;
+            width: 500px;
+        }
+        .t4{
+            height: 100vh;
+            width: 500px;
+        }
+        .t5{
+            height: 100vh;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
     <nav>
         <a href="blog.html" target="mainFrame" title="The things I say">Blog</a>
         <a href="#test" target="mainFrame" title="Wasting time!">This is bad</a>
+        <br>Actually don't think I need a nav panel, can shrink the main page down to something small where everything is easily accessible
     </nav>
-</head>
-<body>
     <h1>James Montero-Blaskett</h1>
-    <p id="test">This is one layout option, (not loading this page into the iFrame
+    <article> Big 'ol picture of me I guess
+        <p>
+            Can do my red trail over an image.  Instead of changing to red on hover, change to 0 opacity.
+        </p>
+    </article>
+    <p id="test">This is where I write a bit about who I am as a person, just
+        a brief intro and background, nothing too fancy.<br><br>
+        Also, this is one layout option, (not loading this page into the iFrame
         on the same page though, that's terrible) use this as the master page
         and then load the links directly into the iFrame.  Doing it this way
         means you could decorate the crap out of the main page, then use basic
         content for any other pages.  It WOULD mean that scrolling would get
         weird on screens that are too small though.
     </p>
+    <div>
         <iframe name="mainFrame" src="#test">This won't show up, there are complicated
             ways to display default content, but it's definitely best to just have
             a valid source url or file to put into the iFrame.
         </iframe>
+    </div>
+    <div class="parent">
+        <div class="stickies">
+            <div class="t3"><div class="t4"></div></div>
+            <div class="t1"><div class="t2"></div></div>
+            <div class="t5"></div>
+        </div>
+    </div>
+    
+    <article>Could also try a vertical carousel for the below perhaps?</article>
+    <article>
+        Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
+        Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
+    </article>
+    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
+    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
+    <br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content<br><br><br>content content content
+    <details>
+        Looking to work with people, not just for them.  
+    </details><br>
+    <aside>
+        A pretty easy javascript is <a href="http://worldwide.futuregirlcorp.com/">this background</a>, it's literally<br>
+        just getting mousepos and converting it to x/y% to feed into the gradient.  The gradient doesn't change.<br>
+        If I'm gonna do this, could probably also get scroll distance and change colours as you scroll too.<br>
+        <a href="https://ghostfragrances.com/">This</a> might be fun to try too. This is using javascript, but I feel like it's possible with just css.<br><br>
+    </aside>
 </body>
 </html>
