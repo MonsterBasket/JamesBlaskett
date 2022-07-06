@@ -2,7 +2,15 @@ body{
     height: 560vh;
 }
 
-/*---------------- Start Stickies -----------------*/
+/*#region ---------------- Start Stickies -----------------*/
+
+/*#region --- read me --- 
+/*This implementation results in a non-full screen page by page window
+(I'm sure there's better terminology, but that's what I'm going with).
+It started fairly scalable with all %'s for size, but that didn't quite
+work out.  Mainly because I needed to work out exactly where content starts
+and stops in order to cover it up nicely... Actually, hold that thought.
+                                                                      #endregion */
 
 .stickies{
     position: absolute;
@@ -15,38 +23,61 @@ body{
     top: 100px; /* wherever you want it to stop (must be the same or higher than .stickies top) */
     width: 100%;
 }
-.sliderContainer1, .sliderContainer2, .sliderContainer3{
+.stickies .coverContainer{
+    top: 0%; /* stop at top of screen */
+}
+.stickies .coverContainer2{
+    top: 600px; /*stop at bottom of sticky content */
+}
+.stickies .coverTop, .stickies .coverBottom{
+    position:sticky;
+    z-index: 3; /* all content below must be z-index 3 or higher */
+}
+.stickies .coverTop{ 
+    top: 0%; /*overwrites ".stickies article" above*/
+    height: 100px; /*same as ".stickies article" top */
+    background-color: red; /* must match page background */
+}
+.stickies .coverBottom{
+    top: 600px; /*same as parent start height */
+    height: 840px; /*highest typical content size (1440) - all sticky content)*/
+    background-color: red; /*must match page background. */
+}
+.sliderContainer1, .sliderContainer2, .sliderContainer3, .coverContainer, .coverContainer2{
     position:absolute;
     overflow: show;
 }
 .slider1, .slider2, .slider3{
     position: sticky;
-    height: 550px; /* 10% higher than .stickies for the gradient, but have to calculate it manually because it's a grandchild (ie. can't  do 110%) */
-    background: linear-gradient(red, blue 85%, rgba(0, 0, 255, 0) 100%);
+    height: 500px; /* same as .stickies, has to be manual because it's a grandchild and its parents are tall */
 }
 article.slider1{
     background:url(./images/treeRoad.jpg);
     background-attachment: fixed; /*oooooh I like this! */
 }
 article.slider2{
-    background:url(./images/treeRoad.jpg);
+    background:url(./images/FlatTop.jpg);
     background-size: 100%;
 }
 article.slider3{
-    background:url(./images/treeRoad.jpg);
+    background:url(./images/MachuPichu.jpg);
+    background-size: 100%;
 }
 .sliderContainer1{
-    height: 140%; /* 140% per container to make each section stay put for just a little bit of extra scroll */
+    height: 1000px; /* double the content height for extra scroll */
 }
 .sliderContainer2{
-    height: 280%; /* 140*2 */
+    height: 2000px; /* double again */
 }
 .sliderContainer3{
-    height: 420%; /* 140*3 */
+    height: 3000px; /* 140*3 */
+}
+.coverContainer, .coverContainer2{
+    height: 3840px; /* last container plus coverBottom height */
 }
 
-/*------------- end stickies ----------------*/
-/*------------ start redtrail ---------------*/
+/*#endregion ------------- end stickies ----------------*/
+/*#region ------------ start redtrail ---------------*/
 
 #redContainer{
     width: 100%;
@@ -78,7 +109,7 @@ article.slider3{
 #redContainer div{
     margin: 0%;
     z-index: 0;
-    background: url(./images/treeRoad.jpg) no-repeat 15vw 100px fixed;
+    background: url(./images/MontStMichel.jpg) no-repeat 15vw 100px fixed;
     background-size: 100%;
 }
 @keyframes plsWait{  /* putting a "loading" cover over the interactive divs while the initial animation plays */
@@ -105,4 +136,4 @@ animation: fade 15s linear forwards;
 #redContainer div:hover {
 animation: trigger 0s forwards;
 }
-/*------------ end redtrail -----------------*/
+/*#endregion ------------ end redtrail -----------------*/
