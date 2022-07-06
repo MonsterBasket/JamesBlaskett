@@ -17,119 +17,7 @@
             console.log("hello");
         }
     </script>
-    <style>
-        body{
-            height: 560vh;
-        }
-
-/*---------------- Start Stickies -----------------*/
-
-        .stickies{
-            position: absolute;
-            left: 25%;
-            top: 150vh;
-            width: 50%;
-            height: 500px;
-        }
-        .stickies article{
-            top: 100px; /* wherever you want it to stop (must be the same or higher than .stickies top) */
-            width: 100%;
-        }
-        .sliderContainer1, .sliderContainer2, .sliderContainer3{
-            position:absolute;
-            overflow: show;
-        }
-        .slider1, .slider2, .slider3{
-            position: sticky;
-            height: 550px; /* 10% higher than .stickies for the gradient, but have to calculate it manually because it's a grandchild (ie. can't  do 110%) */
-            background: linear-gradient(red, blue 85%, rgba(0, 0, 255, 0) 100%);
-        }
-        article.slider1{
-            background:url(./images/treeRoad.jpg);
-            background-attachment: fixed; /*oooooh I like this! */
-        }
-        article.slider2{
-            background:url(./images/treeRoad.jpg);
-            background-size: 100%;
-        }
-        article.slider3{
-            background:url(./images/treeRoad.jpg);
-        }
-        .sliderContainer1{
-            height: 140%; /* 140% per container to make each section stay put for just a little bit of extra scroll */
-        }
-        .sliderContainer2{
-            height: 280%; /* 140*2 */
-        }
-        .sliderContainer3{
-            height: 420%; /* 140*3 */
-        }
-
-/*------------- end stickies ----------------*/
-/*------------ start redtrail ---------------*/
-        
-        #redContainer{
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(20,1fr);
-            grid-template-rows: repeat(20,1fr);
-            overflow: hidden;
-            justify-items: center;
-            align-items: center;
-        }
-        #redSibling{
-            position: absolute;
-            top: 0px;
-            color: white;
-            text-align: center;
-            font-size: 4em;
-        }
-        #redSibling{
-            animation: plsWait 1s forwards;
-        }
-        #redContainer mark{
-            width: 100%;
-            height: 100%;
-            margin: 0%;
-            z-index: 0;
-            background-color: purple;
-        }
-        #redContainer div{
-            /*width: 100%;
-            height: 100%;*/
-            margin: 0%;
-            z-index: 0;
-            background: url(./images/treeRoad.jpg) no-repeat 15vw 100px fixed;
-            background-size: 100%;
-        }
-        @keyframes plsWait{  /* putting a "loading" cover over the interactive divs while the initial animation plays */
-            0%      {z-index: 2; opacity: 1;}
-            80%     {color: white;}
-            90%     {z-index: 2; opacity: 1; color: rgba(255, 255, 255, 0);}
-            100%    {z-index: -100; opacity: 0;}
-        }
-        @keyframes fade {
-            0%      { opacity: 1; z-index: -100; width: 100%; height: 100%; border-radius: 20%;}
-            10%     { opacity: 0;                width:  20%; height:  20%; border-radius: 50%;}
-            40%     {             z-index: 1;}
-            95%     { opacity: 0.4;              width:  80%; height:  80%; border-radius: 20%;}
-            100%    { opacity: 1;                width: 100%; height: 100%; border-radius:  0%;}
-        }
-        @keyframes trigger { /* instantly puts the div to the back to trigger the standard animation */
-            0%      { z-index: 0;}   /* That means I can have an "on hover" animation even if the mouse */
-            100%    { z-index: -100;}   /* leaves the div, rather than having to keep the mouse on top while the animation plays */
-        }
-
-        #redContainer div{
-        animation: fade 15s linear forwards;
-        }
-        #redContainer div:hover {
-        animation: trigger 0s forwards;
-        }
-/*------------ end redtrail -----------------*/
-
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <nav>
@@ -149,7 +37,7 @@
         weird on screens that are too small though.
     </p>
     <div>
-        <iframe name="mainFrame" src="#test">This won't show up, there are complicated
+        <iframe name="mainFrame" src="blog.html">This won't show up, there are complicated
             ways to display default content, but it's definitely best to just have
             a valid source url or file to put into the iFrame.
         </iframe>
