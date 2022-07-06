@@ -1,5 +1,6 @@
 body{
     height: 560vh;
+    margin: 0;
 }
 
 /*#region ---------------- Start Stickies -----------------*/
@@ -9,51 +10,47 @@ body{
 (I'm sure there's better terminology, but that's what I'm going with).
 It started fairly scalable with all %'s for size, but that didn't quite
 work out.  Mainly because I needed to work out exactly where content starts
-and stops in order to cover it up nicely... Actually, hold that thought.
-                                                                      #endregion */
-
+and stops in order to cover it up nicely... I've created custom variables
+so all the math is in the one place, I'll try and get it workign with %'s
+sometime later, for now, any editing is done by changing ALL the below figures
+in :root, and positioning it wherever you want within .stickies.
+Scalability is limited, but at least this allows me to put in smaller screen
+breakpoints, and I know my content needs to be square!
+                                                                       #endregion */
+:root{
+    --overallTop: 150vh;   /* Top position, wherever you want (but lower than stickyTop) */
+    --overallLeft: 25%;    /* Left position, wherever you want */
+    --stickyTop: 100px;    /* height it'll stop at (from top of screen) */
+    --stickyHeight: 500px; /* height and width - could separate width, see .stickies */
+    --stickyBottom: 600px; /* sum of both the above - covers the content scrolling up from the bottom */
+    --coverBottom: 840px;  /* highest typical content size (1440) minus the above.
+    Note that this can be less, as long as any content below covers over the sliders */
+    --slider1: 1000px;     /* Height x2  | These are the content size plus about 500px to make each section */
+    --slider2: 2000px;     /* slider1 x2 | stay still for a while so you don't scroll past accidentally */
+    --slider3: 3500px;     /* slider1 x3 | This one would normally be slider1x3, but by adding on the additional 
+    height of the content, it will get covered up rather than scrolling up WITH the bottom cover.
+    This works much better especially for redtrail that I currently have in there, but also gives it a really nice finish.*/
+    --lastSlider: 3340px;  /* slider1 x 3 + coverBottom - stickyHeight  */
+}
 .stickies{
     position: absolute;
-    left: 25%;
-    top: 150vh;
-    width: 50%;
-    height: 500px;
-}
-.stickies article{
-    top: 100px; /* wherever you want it to stop (must be the same or higher than .stickies top) */
+    top: 150vh; 
     width: 100%;
 }
-.stickies .coverContainer{
-    top: 0%; /* stop at top of screen */
+.coverTop{
+    background-color: white; /* must match page background.  Gradients are possible,
+    as are images, but need to calculate absolute value of matching image
+    (top of image = .stickies top + stickyTop + image height) */
 }
-.stickies .coverContainer2{
-    top: 600px; /*stop at bottom of sticky content */
-}
-.stickies .coverTop, .stickies .coverBottom{
-    position:sticky;
-    z-index: 3; /* all content below must be z-index 3 or higher */
-}
-.stickies .coverTop{ 
-    top: 0%; /*overwrites ".stickies article" above*/
-    height: 100px; /*same as ".stickies article" top */
-    background-color: red; /* must match page background */
-}
-.stickies .coverBottom{
-    top: 600px; /*same as parent start height */
-    height: 840px; /*highest typical content size (1440) - all sticky content)*/
-    background-color: red; /*must match page background. */
-}
-.sliderContainer1, .sliderContainer2, .sliderContainer3, .coverContainer, .coverContainer2{
-    position:absolute;
-    overflow: show;
-}
-.slider1, .slider2, .slider3{
-    position: sticky;
-    height: 500px; /* same as .stickies, has to be manual because it's a grandchild and its parents are tall */
+.coverBottom{
+    background-color: white; /* similar to above but easier.  --coverBottom can be
+    whatever height and image you want, and it starts at --stickyBottom. ('cause you want your
+    bottom covered if it's sticky? gross.)  However, I'd suggest keeping the top of
+    any actual content below: .stickies top + --stickyHeight + coverBottom. (I think) */
 }
 article.slider1{
     background:url(./images/treeRoad.jpg);
-    background-attachment: fixed; /*oooooh I like this! */
+    background-attachment: fixed; 
 }
 article.slider2{
     background:url(./images/FlatTop.jpg);
@@ -63,19 +60,58 @@ article.slider3{
     background:url(./images/MachuPichu.jpg);
     background-size: 100%;
 }
+
+/* ------- end of editable content ---- */
+/* #region ------- Open if you dare ----- */
+/* The ONLY thing you may need to edit are width and left in the top two rules */
+.stickies article.coverContainer{
+    top: 0%; /* stop at top of screen */
+    width: 100%; /* comment this and the next to make it fit the content */
+    left: 0vw; 
+}
+.stickies article.coverContainer2{
+    top: var(--stickyBottom); /* !!!!! stop at BOTTOM of sticky content */
+    width: 100%; /* as above, but for the bottom */
+    left: 0vw; /* as above */
+}
+.stickies article{
+    top: var(--stickyTop); 
+    width: 100%;
+}
+.stickies .coverTop{ 
+    top: 0%; /*overwrites ".stickies article" above*/
+    height: var(--stickyTop); /* fills the gap between top of screen and content */
+}
+.stickies .coverTop, .stickies .coverBottom{
+    position:sticky;
+    z-index: 3; /* all content below must be z-index 3 or higher */
+}
+.stickies .coverBottom{
+    top: var(--stickyBottom);
+    height: var(--coverBottom); 
+}
+.stickies .sliderContainer1, .stickies .sliderContainer2, .stickies .sliderContainer3, .stickies .coverContainer, .stickies .coverContainer2{
+    position:absolute;
+    width: var(--stickyHeight);
+    left: var(--overallLeft)
+}
+.slider1, .slider2, .slider3{
+    position: sticky;
+    height: var(--stickyHeight); /* They don't HAVE to be the same size, but it's easier */
+}
 .sliderContainer1{
-    height: 1000px; /* double the content height for extra scroll */
+    height: var(--slider1);
 }
 .sliderContainer2{
-    height: 2000px; /* double again */
+    height: var(--slider2);
 }
 .sliderContainer3{
-    height: 3000px; /* 140*3 */
+    height: var(--slider3);
 }
 .coverContainer, .coverContainer2{
-    height: 3840px; /* last container plus coverBottom height */
+    height: var(--lastSlider);
 }
-
+/*#endregion
 /*#endregion ------------- end stickies ----------------*/
 /*#region ------------ start redtrail ---------------*/
 
@@ -83,8 +119,8 @@ article.slider3{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(20,1fr);
-    grid-template-rows: repeat(20,1fr);
+    grid-template-columns: repeat(20,1fr); /* technically this could be non-square, just need */
+    grid-template-rows: repeat(20,1fr); /* to adjust the number of divs created in the script */
     overflow: hidden;
     justify-items: center;
     align-items: center;
@@ -121,7 +157,7 @@ article.slider3{
 @keyframes fade {
     0%      { opacity: 1; z-index: -100; width: 100%; height: 100%; border-radius: 20%;}
     10%     { opacity: 0;                width:  20%; height:  20%; border-radius: 50%;}
-    40%     {             z-index: 1;}
+    40%     { opacity: 0; z-index: 1;}
     95%     { opacity: 0.4;              width:  80%; height:  80%; border-radius: 20%;}
     100%    { opacity: 1;                width: 100%; height: 100%; border-radius:  0%;}
 }
