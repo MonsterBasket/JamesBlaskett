@@ -31,7 +31,7 @@
             width: 50%;
             height: 500px;
         }
-        .stickies div{
+        .stickies article{
             top: 100px; /* wherever you want it to stop (must be the same or higher than .stickies top) */
             width: 100%;
         }
@@ -41,27 +41,28 @@
         }
         .slider1, .slider2, .slider3{
             position: sticky;
-            height: 550px; /* 10% higher than .stickies for the gradient, but can't do 110% because it's a grandchild */
+            height: 550px; /* 10% higher than .stickies for the gradient, but have to calculate it manually because it's a grandchild (ie. can't  do 110%) */
             background: linear-gradient(red, blue 85%, rgba(0, 0, 255, 0) 100%);
         }
-        div.slider1{
-
+        article.slider1{
+            background:url(./images/treeRoad.jpg);
+            background-attachment: fixed; /*oooooh I like this! */
         }
-        div.slider2{
+        article.slider2{
             background:url(./images/treeRoad.jpg);
             background-size: 100%;
         }
-        div.slider3{
+        article.slider3{
             background:url(./images/treeRoad.jpg);
         }
         .sliderContainer1{
             height: 140%; /* 140% per container to make each section stay put for just a little bit of extra scroll */
         }
         .sliderContainer2{
-            height: 280%; /* 280vh */
+            height: 280%; /* 140*2 */
         }
         .sliderContainer3{
-            height: 420%; /* 420vh */
+            height: 420%; /* 140*3 */
         }
 
 /*------------- end stickies ----------------*/
@@ -74,6 +75,8 @@
             grid-template-columns: repeat(20,1fr);
             grid-template-rows: repeat(20,1fr);
             overflow: hidden;
+            justify-items: center;
+            align-items: center;
         }
         #redSibling{
             position: absolute;
@@ -83,34 +86,43 @@
             font-size: 4em;
         }
         #redSibling{
-            animation: plsWait 15s forwards;
+            animation: plsWait 1s forwards;
         }
-        #redContainer div, #redContainer article{
+        #redContainer mark{
             width: 100%;
             height: 100%;
             margin: 0%;
             z-index: 0;
             background-color: purple;
         }
-        @keyframes plsWait{  /*just putting a cover over the interactive divs while the initial animation plays */
+        #redContainer div{
+            /*width: 100%;
+            height: 100%;*/
+            margin: 0%;
+            z-index: 0;
+            background: url(./images/treeRoad.jpg) no-repeat 15vw 100px fixed;
+            background-size: 100%;
+        }
+        @keyframes plsWait{  /* putting a "loading" cover over the interactive divs while the initial animation plays */
             0%      {z-index: 2; opacity: 1;}
             80%     {color: white;}
-            90%     {z-index: 2; opacity: 1; color: purple;}
+            90%     {z-index: 2; opacity: 1; color: rgba(255, 255, 255, 0);}
             100%    {z-index: -100; opacity: 0;}
         }
         @keyframes fade {
-            0%      { background-color: purple;  opacity: 1; z-index: -100; margin: 0%;   transform: translate(0%,  0%); border-radius: 20%;}
-            10%     { background-color: hotpink; opacity: 0;                margin: -50%; transform: translate(50%,50%); border-radius: 50%;}
-            40%     { background-color: purple;              z-index: 1;}
-            100%    {                              opacity: 1;                margin: 0%;   transform: translate(0%,  0%); border-radius: 0%;}
+            0%      { opacity: 1; z-index: -100; width: 100%; height: 100%; border-radius: 20%;}
+            10%     { opacity: 0;                width:  20%; height:  20%; border-radius: 50%;}
+            40%     {             z-index: 1;}
+            95%     { opacity: 0.4;              width:  80%; height:  80%; border-radius: 20%;}
+            100%    { opacity: 1;                width: 100%; height: 100%; border-radius:  0%;}
         }
         @keyframes trigger { /* instantly puts the div to the back to trigger the standard animation */
-            0%      { z-index: 0;}   /*That means I can have an "on hover" animation even if the mouse */
-            100%    { z-index: -100;}   /*leaves the div, rather than having to keep the mouse on top while the animation plays */
+            0%      { z-index: 0;}   /* That means I can have an "on hover" animation even if the mouse */
+            100%    { z-index: -100;}   /* leaves the div, rather than having to keep the mouse on top while the animation plays */
         }
 
         #redContainer div{
-        animation: fade 15s forwards;
+        animation: fade 15s linear forwards;
         }
         #redContainer div:hover {
         animation: trigger 0s forwards;
@@ -145,23 +157,25 @@
 
 
     <!------------  Stickies, remember that these go from bottom to top!  ------------>
-    <div class="stickies">
-        <div class="sliderContainer3"><div class="slider3">
-
+    <div class="stickies"> 
+        <article class="sliderContainer3"><article class="slider3">
+                             <!-- Sticky 3 start -->
         
 
-        </div></div>
-        <div class="sliderContainer2"><div class="slider2">
-
+        </article></article> <!-- Sticky 3 end -->
+        <article class="sliderContainer2"><article class="slider2">
+                             <!-- Sticky 2 start -->
             <div id="redContainer">
-                    <article id="redSibling">Please Wait...</article>
+                <mark id="redSibling">Please Wait...</mark>
+
+                <script>redTrailAddDiv();</script>
+            
             </div>
 
-            <script>redTrailAddDiv();</script>
 
-        </div></div>
-        <div class="sliderContainer1"><div class="slider1">
-
+        </article></article> <!-- Sticky 2 end -->
+        <article class="sliderContainer1"><article class="slider1">
+                             <!-- Sticky 1 start -->
             <article>
                 Could also try a vertical carousel for the below perhaps?<br>
                 Buuuut maybe I've put enough work into the stickies and red trail now...
@@ -172,7 +186,7 @@
             </article>
 
         
-        </div></div>
+        </article></article> <!-- Sticky 1 end -->
     </div>
     
 
