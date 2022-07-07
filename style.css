@@ -1,78 +1,125 @@
+:root{
+    --orange1: #613310; /* primary   - darkest grey */
+    --grey1: #7D7D7D; /* secondary */
+    --grey2: #ABABAB; /* highlight - lightest grey */
+    --purp1: #1A0A33; /* primary   - darkest purple */
+    --purp2: #280A4A; /* primary */
+    --purp3: #300A62; /* primary */
+    --blue1: #35007D; /* secondary */
+    --blue2: #4300A3; /* secondary */
+    --blue3: #5100C7; /* highlight - lightest blue */
+}
+.colorGuide{ /*just used as a colour pallette 60/30/10 guide */
+    background: linear-gradient(90deg, var(--orange1) 0%, var(--purp2) 21%, var(--purp3) 38%, var(--purp1) 60%,
+    var(--blue2) 60%, var(--blue1) 74%, var(--grey1) 90%, var(--grey2) 90%, var(--blue3) 100%);
+    width: 100%;
+    height: 200px;
+}
 body{
-    height: 560vh;
     margin: 0;
+    background-color: var(--purp1);
+    color: var(--grey2);
 }
 
 /*#region ---------------- Start Stickies -----------------*/
 
-/*#region --- read me --- 
-/*This implementation results in a non-full screen page by page window
-(I'm sure there's better terminology, but that's what I'm going with).
-It started fairly scalable with all %'s for size, but that didn't quite
-work out.  Mainly because I needed to work out exactly where content starts
-and stops in order to cover it up nicely... I've created custom variables
-so all the math is in the one place, I'll try and get it workign with %'s
-sometime later, for now, any editing is done by changing ALL the below figures
-in :root, and positioning it wherever you want within .stickies.
-Scalability is limited, but at least this allows me to put in smaller screen
-breakpoints, and I know my content needs to be square!
-                                                                       #endregion */
+/* -------------------- Read Me 1: usage --------------------
+This implementation results in a non-full screen page by page window (I'm sure there's better terminology, but that's what I'm going with).
+
+1. Moving the stickies:  There are 4 variables in :root that are used to move and size the content frame.  If you wish position it from the left
+        instead of the right, search for #leftNotRight for everything you'll need to edit.
+2. Covering the stickies:  .coverTop and .coverBottom cover a small amount of overflow.  You can add customised images into them if you don't want
+        a solid colour background.  Just make sure to line up any content above and below.
+3. Sticky content: There are currently three stickies.  You'll need to add content into the relevant sections in the HTML file.  You've also got 
+        some space available below for styling.
+4. Side content: To make it static, just add it as a child to the slider and position it left of right.  To make it scroll, add it as a child to the
+        slider ABOVE, and set it's bottom position down about 2x --stickyHeight.
+5. Background: There's a div (<article>) in place and two preset (but as yet untested) image holders, just fill in the URL and uncomment whichever
+        you want.  (Note that for scrolling, the height will be several 000 px.
+6. More stickies: It's possible, but you'll have to create the divs (remember, they go bottom to top), add a variable for each extra set, edit the
+        current --slider3 and --lastSlider calculations, and add your new tags into several places in the uneditable section.
+
+  */
+/* -------------------- Read Me 2: scalability (technical, not useful) -------
+I finally have a full scalable solution!  As long as you use vw/vh or px and not %, then everything works as it should... The issue is due to
+fixed backgrounds, however you can't use the work around unless you commit to ONLY using % values.   -   (fixed background work-around https://codepen.io/monsterbasket/pen/abYdaLK?editors=1100)
+
+The --coverBottom is tricky.  It needs to allow for different screen sizes and fill the whole gap from the bottom of the content to the bottom
+of the screen.  It ALSO needs to be higher than --stickyHeight, or else things will show when you scroll past the stickies.  As the highest
+standard screens are 1080 or 1440, you only need --stickyHeight + --stickyTop to be above 600 or so before content starts to show with any
+automatic calculations.  I've gone with a default value of 1000px.  You're going to need higher content than that to allow the stickies to 
+fully scroll off the screen anyway, then you're better off just covering with other content.
+
+What this means is to not put any content or backgrounds directly into body, but fill the screen with other content, even if they're just for
+background images.  As mentioned, make sure any content above or below is at z-index 4 or higher to ensure it covers the content as it scrolls.
+However keep in mind that these are STICKIES!  So any content below will either need to start at or below --lastSlider or else they'll visibly 
+scroll over --coverBottom.  (if that's what you want, start content 8 pixels higher (border blur) than --slider3 instead.
+*/
+
 :root{
-    --overallTop: 150vh;   /* Top position, wherever you want (but lower than stickyTop) */
-    --overallLeft: 25%;    /* Left position, wherever you want */
-    --stickyTop: 100px;    /* height it'll stop at (from top of screen) */
-    --stickyHeight: 500px; /* height and width - could separate width, see .stickies */
-    --stickyBottom: 600px; /* sum of both the above - covers the content scrolling up from the bottom */
-    --coverBottom: 840px;  /* highest typical content size (1440) minus the above.
-    Note that this can be less, as long as any content below covers over the sliders */
-    --slider1: 1000px;     /* Height x2  | These are the content size plus about 500px to make each section */
-    --slider2: 2000px;     /* slider1 x2 | stay still for a while so you don't scroll past accidentally */
-    --slider3: 3500px;     /* slider1 x3 | This one would normally be slider1x3, but by adding on the additional 
-    height of the content, it will get covered up rather than scrolling up WITH the bottom cover.
-    This works much better especially for redtrail that I currently have in there, but also gives it a really nice finish.*/
-    --lastSlider: 3340px;  /* slider1 x 3 + coverBottom - stickyHeight  */
-}
-.stickies{
-    position: absolute;
-    top: 150vh; 
-    width: 100%;
+    --posTop: 150vh;   /* Top position, wherever you want (but lower than stickyTop) */
+    --posRight: 10vw;     /* Right position, wherever you want, but has to be in px or vw (#leftNotRight - change name) */
+    --stickyTop: 12.5vh;    /* height it'll stop at (from top of screen) */
+    --stickyHeight: 30vw; /* height of content box */
+    --stickyWidth: 30vw;  /* width, but note that I've used vh, not vw - I want it square */
+    /* more variables in the uneditable section - they're calculated */
 }
 .coverTop{
-    background-color: white; /* must match page background.  Gradients are possible,
+    background-color: var(--purp1); /* must match page background.  Gradients are possible,
     as are images, but need to calculate absolute value of matching image
     (top of image = .stickies top + stickyTop + image height) */
 }
 .coverBottom{
-    background-color: white; /* similar to above but easier.  --coverBottom can be
-    whatever height and image you want, and it starts at --stickyBottom. ('cause you want your
-    bottom covered if it's sticky? gross.)  However, I'd suggest keeping the top of
-    any actual content below: .stickies top + --stickyHeight + coverBottom. (I think) */
+    background-color: var(--purp1); /* similar to above but in reverse.  As mentioned earlier
+    it's easier to just have full width content cover the overlap, just make sure it's > z-index 3  */
+}
+.stickyBackground{
+    background-color: var(--purp1);
+    /* background: url(./images/backgroundGoesHere.jpg) left 0px top var(--stickyTop)/100vw var(--stickyHeight) fixed; */    /* static background    */
+    /* background: url(./images/backgroundGoesHere.jpg) left 0px top var(--posTop)/100vw var(--slider3) absolute; */    /* scrolling background */
 }
 article.slider1{
-    background:url(./images/treeRoad.jpg);
+    background:url(./images/treeRoad.jpg) right var(--posRight) top var(--stickyTop)/var(--stickyHeight) var(--stickyWidth);
     background-attachment: fixed; 
 }
 article.slider2{
-    background:url(./images/FlatTop.jpg);
+    background:url(./images/graffiti.gif) ;
     background-size: 100%;
+}
+.slider2 div{ 
+    display: inline-block;
+    position: relative;
+    left: -265px;
+    bottom: -1000px;
 }
 article.slider3{
     background:url(./images/MachuPichu.jpg);
     background-size: 100%;
 }
-
-/* ------- end of editable content ---- */
-/* #region ------- Open if you dare ----- */
-/* The ONLY thing you may need to edit are width and left in the top two rules */
+/* #endregion ------ end of editable sticky data ---- */
+/* #region  ------- Open if you dare - (stickies uneditable) ----- */
+/* The ONLY thing you may need to edit are to remove width and left in the top two rules */
+:root{
+    --stickyBottom: calc(var(--stickyTop) + var(--stickyHeight)); /* Bottom of content, used for --coverBottom that covers the content scrolling up from the bottom */
+    --coverBottom: 1000px; /* see notes on scalability */
+    --slider1: calc(var(--stickyHeight) + 500px);   /*| These are the content size plus about 500px to make each section */
+    --slider2: calc(var(--slider1) * 2);            /*| stay still for a while so you don't scroll past accidentally */
+    --slider3: calc(var(--slider1) * 3.5);          /*| If you want the last slider to scroll up, rather than be scrolled over,
+    then change this to slider1 x3.  I like it how it is though, but works much better especially for redtrail that I currently have in there */
+    --lastSlider: calc(var(--stickyHeight) * 6 + var(--coverBottom));   /*3840px;  /* slider1 x 3 + coverBottom  */
+}
 .stickies article.coverContainer{
-    top: 0%; /* stop at top of screen */
-    width: 100%; /* comment this and the next to make it fit the content */
-    left: 0vw; 
+    width: 100%; /* comment out this and the next to make it fit the content */
+    left: 0%;
 }
 .stickies article.coverContainer2{
-    top: var(--stickyBottom); /* !!!!! stop at BOTTOM of sticky content */
     width: 100%; /* as above, but for the bottom */
-    left: 0vw; /* as above */
+    left: 0%; /* as above */
+}
+.stickies{
+    position: absolute;
+    top: var(--posTop); 
+    width: 100%;
 }
 .stickies article{
     top: var(--stickyTop); 
@@ -84,16 +131,38 @@ article.slider3{
 }
 .stickies .coverTop, .stickies .coverBottom{
     position:sticky;
-    z-index: 3; /* all content below must be z-index 3 or higher */
+    z-index: 3; /* all content below stickies must be z-index 3 or higher */
+    box-shadow: 0px 0px 4px 4px var(--purp1);
+}
+.stickyBackground{
+    position: absolute;
+    left: 0px;
+    top: var(--posTop);
+    width: 100vw;
+    height: var(--stickyHeight);
 }
 .stickies .coverBottom{
-    top: var(--stickyBottom);
+    top: var(--stickyBottom); /* stop at BOTTOM of sticky content */
     height: var(--coverBottom); 
+}
+.coverBottom .coverLeft{
+    right: calc(var(--posRight) + var(--stickyWidth)); /* Need to swap these two appropriately if positioning from the left (#leftNotRight)*/
+}                                                       /*  |   */
+.coverBottom .coverRight{                               /*  |   */
+    right: var(--posRight);                 /*  <-----------I   */    
+}
+.coverBottom .coverLeft, .coverBottom .coverRight{
+    width:0px;
+    height:var(--stickyHeight);
+    position: absolute;
+    display: inline-block;
+    top: calc(0px - var(--stickyHeight));
+    box-shadow: 0px 0px 4px 4px var(--purp1);
 }
 .stickies .sliderContainer1, .stickies .sliderContainer2, .stickies .sliderContainer3, .stickies .coverContainer, .stickies .coverContainer2{
     position:absolute;
-    width: var(--stickyHeight);
-    left: var(--overallLeft)
+    width: var(--stickyWidth);
+    right: var(--posRight);
 }
 .slider1, .slider2, .slider3{
     position: sticky;
@@ -111,8 +180,13 @@ article.slider3{
 .coverContainer, .coverContainer2{
     height: var(--lastSlider);
 }
-/*#endregion
+.coverContainer2{
+    height: var(--lastSlider);
+}
+
 /*#endregion ------------- end stickies ----------------*/
+
+
 /*#region ------------ start redtrail ---------------*/
 
 #redContainer{
@@ -140,18 +214,17 @@ article.slider3{
     height: 100%;
     margin: 0%;
     z-index: 0;
-    background-color: purple;
+    background-color: var(--purp2);
 }
 #redContainer div{
     margin: 0%;
     z-index: 0;
-    background: url(./images/MontStMichel.jpg) no-repeat 15vw 100px fixed;
-    background-size: 100%;
+    background: url(./images/MontStMichel.jpg) no-repeat right var(--posRight) top var(--stickyTop)/var(--stickyWidth) var(--stickyHeight) fixed;
 }
 @keyframes plsWait{  /* putting a "loading" cover over the interactive divs while the initial animation plays */
     0%      {z-index: 2; opacity: 1;}
-    80%     {color: white;}
-    90%     {z-index: 2; opacity: 1; color: rgba(255, 255, 255, 0);}
+    90%     {color: white;}
+    95%     {z-index: 2; opacity: 1; color: rgba(255, 255, 255, 0);}
     100%    {z-index: -100; opacity: 0;}
 }
 @keyframes fade {
