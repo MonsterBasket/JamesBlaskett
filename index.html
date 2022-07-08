@@ -19,36 +19,31 @@
 </head>
 <body>
     <header>
-        <div class="treeParent"><div class="tree1"></div></div>
-
+        <label>
+            <input type="radio" name="radio1" value="nothing" checked>
+            <div class="treeParent"><div class="tree1"></div></div>
+        </label>
         <nav>
-            <a href="blog.html" target="mainFrame" title="The things I say">Blog</a>
-            <a href="#test" target="mainFrame" title="Wasting time!">This is bad</a>
-            <br>Actually don't think I need a nav panel, can shrink the main page down to something small where everything is easily accessible
+            <label>
+                <input type="radio" name="radio1" value="blog">
+                <div class="blogButton"></div>
+            </label>
+
+            <a href="blog.html" title="The things I say"><div class="blogButton2">Blog</div></a>
+            <a href="#test" title="How I say them"><div class="workButton">Portfolio</div></a>
+            <a href="#contact" title="Who I say them to"><div class="contactButton">Contact</div></a>
         </nav>
-        <h1>James Montero-Blaskett</h1>
-        <h3>notes to myself</h3>
-        <article>look into iframe manipulation.  remove border and scroll bars, can I use an
-            iframe the same way I used normal divs in my 3x3 project?<br>
-        </article>
-        <article> Big 'ol picture of me I guess</article>
-        <p id="test">This is where I write a bit about who I am as a person, just
-            a brief intro and background, nothing too fancy.<br><br>
-        </p>
-    
-        <div class="colorGuide"></div>
-    
-        <article>
-            Could also try a vertical carousel for the below perhaps?<br>
-            Buuuut maybe I've put enough work into the stickies and red trail now...
-        </article>
-        <article>
-            Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
-            Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
-        </article>
-    
-        <iframe name="mainFrame" src="blog.html"></iframe>
-    
+        <div class="intro">
+            <h1>James Montero-Blaskett</h1>
+            <h2>Full-Stack Developer<sup><span style="font-size: 20px; line-height: 40px;">*</span></sup></h2><br><br>
+            <h6><em>*almost</em></h6>
+            <h3>~ a bit about me ~</h3>
+            <p>Husband.  Father.  Programmer.<br><br>
+            Do you need to know more?  I've always dabbled in programming as a bit of a hobby, but have been working in the corporate world for most of the past decade.
+            When my position was made redundant and they gave me a big fat check, I jumped on the opportunity to take up programming full-time.<br><br>
+            I'm currently still studying through <a href="http://www.academyxi.com">Academy X<sup>i</sup></a> and loving every stress filled minute of it.
+            So please have a browse through my works so far, follow my blog, and stay tuned for updates as I progress through this course.</p>
+        </div>
     </header>
 
 
@@ -56,8 +51,21 @@
 
     <!--#region ------  Stickies, remember that these go from bottom to top!  ------------>
     <div class="stickies"> 
-        <article class="coverContainer"><article class="coverTop"></article></article>
-        <article class="coverContainer2"><article class="coverBottom"><article class="coverLeft"></article><article class="coverRight"></article></article>
+        <article class="coverContainer2">
+            <article class="coverBottom">
+                <article class="coverLeft"></article>
+                <article class="coverRight"></article>
+            </article>
+        </article>
+        <article class="coverContainer">
+            <article class="coverTop">
+                <div class="treeParent2">
+                    <div class="tree2 top"></div>
+                    <div class="tree2 mid"></div>
+                    <div class="tree2 bot"></div>
+                </div>    
+            </article>
+        </article>
         <article class="sliderContainer3">
             <article class="slider3">
                              <!-- Sticky 3 start -->

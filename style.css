@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap'); /* font-family: 'Metamorphous', cursive; */
+
 :root{
     --orange1: #613310; /* primary   - darkest grey */
     --grey1: #7D7D7D; /* secondary */
@@ -7,18 +9,33 @@
     --purp3: #300A62; /* primary */
     --blue1: #35007D; /* secondary */
     --blue2: #4300A3; /* secondary */
-    --blue3: #5100C7; /* highlight - lightest blue */
-}
-.colorGuide{ /*just used as a colour pallette 60/30/10 guide */
-    background: linear-gradient(90deg, var(--orange1) 0%, var(--purp2) 21%, var(--purp3) 38%, var(--purp1) 60%,
-    var(--blue2) 60%, var(--blue1) 74%, var(--grey1) 90%, var(--grey2) 90%, var(--blue3) 100%);
-    width: 100%;
-    height: 200px;
+    --blue3: #7a21ff; /* highlight - lightest blue */
 }
 body{
     margin: 0;
     background-color: var(--purp1);
     color: var(--grey2);
+}
+a, a:active, a:visited{
+    color: var(--blue3);
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6, p, a, article{
+    font-family: 'Metamorphous';
+    font-weight: lighter;
+}
+h1{
+    font-size: 50px;
+}
+h2{
+    font-size: 40px;
+}
+h3{
+    margin-block-start: 2em;
+    font-size: 30px;
+}
+h6{
+    margin-block-start: -6em;
 }
 header{
     position: absolute;
@@ -30,26 +47,91 @@ header{
                 linear-gradient(220deg, var(--orange1), var(--purp2), #35007D00 60%);;
     z-index: 4;
 }
-iframe{
-    border: none;
-    overflow: hidden;
-    width: 300px;
-    aspect-ratio: 1 / 1;
-    display: inline-block;
+.intro{
+    position: absolute;
+    width: 45%;
+    left: 15%;
+    top: 15%;
+    text-align: center;
 }
-.treeParent{
-    width:100%;
-    height: 100%;
+.intro p{
+    text-align: left;
+}
+.blogButton{
+    border: none;
     position: absolute;
     overflow: hidden;
+    width: 175px;
+    left: 106vh;
+    top: 8%;
+    background:url(./images/3x3.png) 100%;
+    clip-path: polygon(48% 93%, 48% 81%, 30% 85%, 32% 80%, 23% 78%, 17% 73%, 5% 67%, 19% 60%, 11% 50%, 8% 42%, 14% 42%, 12% 33%, 13% 26%, 12% 19%, 23% 25%, 28% 26%, 37% 34%, 39% 23%, 46% 14%, 51% 3%, 55% 13%, 60% 20%, 63% 33%, 69% 26%, 80% 25%, 88% 20%, 86% 33%, 86% 38%, 85% 44%, 90% 44%, 79% 58%, 86% 62%, 95% 63%, 84% 71%, 80% 76%, 69% 79%, 72% 82%, 66% 85%, 58% 84%, 52% 82%, 53% 94%);
+    aspect-ratio: 1 / 1;
+    display: inline-block;
+    animation: blogleaf 2s ease-in-out alternate infinite;
+    transition: left 0.5s;
 }
-.tree1{
+@keyframes blogleaf{
+    0%    { transform:translate(9px, -11px) rotate(225deg);}
+    100%      { transform:translate(22px, 11px) rotate(209deg);}
+}
+[type=radio]{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+[type=radio] + .blogButton{
+    cursor: pointer;
+}
+[type=radio]:checked + .blogButton{
+    clip-path: polygon(44% 100%, 33% 100%, 22% 100%, 13% 100%, 7% 97%, 3% 93%, 0 87%, 0 73%, 0 53%, 0 45%, 0 31%, 0 13%, 3% 7%, 7% 3%, 13% 0, 20% 0, 28% 0, 35% 0, 44% 0, 51% 0, 59% 0, 68% 0, 77% 0, 87% 0, 93% 3%, 97% 7%, 100% 13%, 100% 18%, 100% 31%, 100% 40%, 100% 48%, 100% 56%, 100% 63%, 100% 72%, 100% 87%, 97% 93%, 93% 97%, 87% 100%, 78% 100%, 68% 100%, 55% 100%);
+    transition: clip-path 1s;
+    left: 25vh;
+    transition: left 0.5s;
+    animation: blogCenter 0.5s forwards;
+}
+@keyframes blogCenter{
+    0%      { transform:translate(-15px, 2px) rotate(225deg);}
+    100%    { transform:translate(0px, 214px) rotate(360deg) scale(4);}
+
+}
+.treeParent, .treeParent2{
+    width:100%;
+    position: absolute;
+    overflow: hidden;
+    background: red;
+}
+.treeParent{
+    height: 100%;
+}
+.treeParent2{
+    height: 100%;
+    z-index: 5;
+}
+.tree1, .tree2{
     height: 100%;
     aspect-ratio: 1 / 1;
     position:relative;
-    background-color: var(--orange1);
-    /*clip-path: polygon(0% 100%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 86% 100%, 74% 100%, 69% 98%, 62% 98%, 55% 100%);*/
+}
+.tree1{
+    background: linear-gradient(105deg, var(--purp2), var(--blue1));           
     animation: sway 2s ease-in-out alternate infinite;
+}
+.tree2{
+    background: red;
+}
+.tree2.top{
+    height: var(--stickyTop);
+    width: 100%;
+}
+.tree2.mid{
+    height: var(--stickyHeight);
+    width: calc(100% - var(--stickyWidth) - var(--posRight));
+}
+.tree2.bot{
+    height: 2000px; /* (remaining content can live in this div) */
+    width: 100%;
 }
 @keyframes sway{
     0%      { clip-path: polygon(0% 100%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 86% 100%, 74% 100%, 69% 98%, 62% 98%, 55% 100%);}
@@ -211,7 +293,7 @@ article.slider3{
 .sliderContainer3{
     height: var(--slider3);
 }
-.coverContainer, .coverContainer2{
+.coverContainer{
     height: var(--lastSlider);
 }
 .coverContainer2{
