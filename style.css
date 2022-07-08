@@ -20,7 +20,41 @@ body{
     background-color: var(--purp1);
     color: var(--grey2);
 }
-
+header{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    height: calc(var(--posTop) + var(--stickyTop)); 
+    background: linear-gradient(0deg, var(--purp1), var(--blue1), #35007D00 70%), 
+                linear-gradient(135deg, var(--grey1), var(--blue1), #35007D00 40%), 
+                linear-gradient(220deg, var(--orange1), var(--purp2), #35007D00 60%);;
+    z-index: 4;
+}
+iframe{
+    border: none;
+    overflow: hidden;
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    display: inline-block;
+}
+.treeParent{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+.tree1{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    position:relative;
+    background-color: var(--orange1);
+    /*clip-path: polygon(0% 100%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 86% 100%, 74% 100%, 69% 98%, 62% 98%, 55% 100%);*/
+    animation: sway 2s ease-in-out alternate infinite;
+}
+@keyframes sway{
+    0%      { clip-path: polygon(0% 100%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 86% 100%, 74% 100%, 69% 98%, 62% 98%, 55% 100%);}
+    100%    { clip-path: polygon(0% 100%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14.2%, 22.1% 11.1%, 23.2% 5.1%, 25.4% 0%, 26.4% 0%, 24.3% 5%, 24.1% 9.2%, 26.1% 8.4%, 31.7% 5.2%, 35.8% 4.4%, 40.2% 4.4%, 42.4% 2.2%,     44.5% 0%, 46% 0%, 42.4% 4.3%, 48% 5.5%, 54% 5.5%, 59% 5.6%, 66% 4.6%, 71% 3.6%, 75% 4.2%, 82% 6.7%, 81% 7.3%, 73% 5.7%, 69.5% 6.3%, 69% 6.7%, 73% 8.7%, 76% 9.7%, 81% 9.7%, 79% 10.7%, 74% 10.7%,     70% 9.2%, 67% 7.7%, 63% 6.6%, 58% 7.6%, 53% 7.5%, 49% 7.9%, 44% 7.4%, 35% 8.8%, 31% 10.3%, 28% 12.2%, 20% 19.1%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,     22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 86% 100%, 74% 100%, 69% 98%, 62% 98%, 55% 100%);}
+}
 /*#region ---------------- Start Stickies -----------------*/
 
 /* -------------------- Read Me 1: usage --------------------
@@ -56,12 +90,12 @@ However keep in mind that these are STICKIES!  So any content below will either 
 scroll over --coverBottom.  (if that's what you want, start content 8 pixels higher (border blur) than --slider3 instead.
 */
 
-:root{
+:root{ /* These do need to be available to other content for screen width adjustments etc. */
     --posTop: 150vh;   /* Top position, wherever you want (but lower than stickyTop) */
     --posRight: 10vw;     /* Right position, wherever you want, but has to be in px or vw (#leftNotRight - change name) */
     --stickyTop: 12.5vh;    /* height it'll stop at (from top of screen) */
     --stickyHeight: 30vw; /* height of content box */
-    --stickyWidth: 30vw;  /* width, but note that I've used vh, not vw - I want it square */
+    --stickyWidth: 30vw;  /* width, but note that I've used vw for both - I want it square */
     /* more variables in the uneditable section - they're calculated */
 }
 .coverTop{
@@ -99,7 +133,7 @@ article.slider3{
 /* #endregion ------ end of editable sticky data ---- */
 /* #region  ------- Open if you dare - (stickies uneditable) ----- */
 /* The ONLY thing you may need to edit are to remove width and left in the top two rules */
-:root{
+.stickies{ 
     --stickyBottom: calc(var(--stickyTop) + var(--stickyHeight)); /* Bottom of content, used for --coverBottom that covers the content scrolling up from the bottom */
     --coverBottom: 1000px; /* see notes on scalability */
     --slider1: calc(var(--stickyHeight) + 500px);   /*| These are the content size plus about 500px to make each section */

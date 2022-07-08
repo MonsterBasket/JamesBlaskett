@@ -18,34 +18,40 @@
     </script>
 </head>
 <body>
-    <nav>
-        <a href="blog.html" target="mainFrame" title="The things I say">Blog</a>
-        <a href="#test" target="mainFrame" title="Wasting time!">This is bad</a>
-        <br>Actually don't think I need a nav panel, can shrink the main page down to something small where everything is easily accessible
-    </nav>
-    <h1>James Montero-Blaskett</h1>
-    <h3>notes to myself</h3>
-    <article>look into iframe manipulation.  remove border and scroll bars, can I use an
-        iframe the same way I used normal divs in my 3x3 project?<br>
-    </article>
-    <article> Big 'ol picture of me I guess</article>
-    <p id="test">This is where I write a bit about who I am as a person, just
-        a brief intro and background, nothing too fancy.<br><br>
-        Also, this is one layout option, (not loading this page into the iFrame
-        on the same page though, that's terrible) use this as the master page
-        and then load the links directly into the iFrame.  Doing it this way
-        means you could decorate the crap out of the main page, then use basic
-        content for any other pages.  It WOULD mean that scrolling would get
-        weird on screens that are too small though.
-    </p>
-    <div>
-        <iframe name="mainFrame" src="blog.html">This won't show up, there are complicated
-            ways to display default content, but it's definitely best to just have
-            a valid source url or file to put into the iFrame.
-        </iframe>
-    </div>
+    <header>
+        <div class="treeParent"><div class="tree1"></div></div>
 
-    <div class="colorGuide"></div>
+        <nav>
+            <a href="blog.html" target="mainFrame" title="The things I say">Blog</a>
+            <a href="#test" target="mainFrame" title="Wasting time!">This is bad</a>
+            <br>Actually don't think I need a nav panel, can shrink the main page down to something small where everything is easily accessible
+        </nav>
+        <h1>James Montero-Blaskett</h1>
+        <h3>notes to myself</h3>
+        <article>look into iframe manipulation.  remove border and scroll bars, can I use an
+            iframe the same way I used normal divs in my 3x3 project?<br>
+        </article>
+        <article> Big 'ol picture of me I guess</article>
+        <p id="test">This is where I write a bit about who I am as a person, just
+            a brief intro and background, nothing too fancy.<br><br>
+        </p>
+    
+        <div class="colorGuide"></div>
+    
+        <article>
+            Could also try a vertical carousel for the below perhaps?<br>
+            Buuuut maybe I've put enough work into the stickies and red trail now...
+        </article>
+        <article>
+            Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
+            Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
+        </article>
+    
+        <iframe name="mainFrame" src="blog.html"></iframe>
+    
+    </header>
+
+
 
 
     <!--#region ------  Stickies, remember that these go from bottom to top!  ------------>
@@ -75,15 +81,7 @@
         <article class="sliderContainer1">
             <article class="slider1">
                              <!-- Sticky 1 start -->
-                <article>
-                    Could also try a vertical carousel for the below perhaps?<br>
-                    Buuuut maybe I've put enough work into the stickies and red trail now...
-                </article>
-                <article>
-                    Samples of works, as nothing is particularly pretty at this stage, just a written list<br>
-                    Can make that written list damn pretty though.  Maybe a mix of animated css hover highlights?
-                </article>
-
+                        
         
             </article>
         </article>           <!-- Sticky 1 end -->
