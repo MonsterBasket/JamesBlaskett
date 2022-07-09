@@ -15,7 +15,7 @@ body{
     margin: 0;
     background-color: var(--purp1);
     color: var(--grey2);
-    height: calc(var(--lastSlider) + var(--coverBottom) * 2 - var(--stickyHeight));
+    height: calc(var(--posTop) + var(--stickyTop) + var(--lastSlider) + var(--coverBottom));
 }
 a, a:active, a:visited{
     color: var(--blue3);
@@ -58,6 +58,28 @@ header{
 .intro p{
     text-align: left;
 }
+footer{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    top: var(--coverBottom);
+    height: var(--coverBottom);
+}
+.outro{
+    display: inline-block;
+    position: absolute;
+    width: 45%;
+    left: 10%;
+    text-align: center;
+    right: calc(var(--stickyWidth) + 20px);
+    top: 50%;
+}
+.outro:hover + div{
+    opacity: 0;
+    transition: 1s;
+}
+
+/*#region --------- buttons ----------- */
 .blogButton{
     border: none;
     position: absolute;
@@ -101,6 +123,10 @@ header{
     0%      { transform:translate(-15px, 2px) rotate(225deg);}
     100%    { transform:translate(0px, 214px) rotate(360deg) scale(4);}
 }
+/*#endregion --------------------------------*/
+
+
+/*#region -------- tree positioning --------- */
 .treeParent, .treeParent2{
     width:100%;
     position: absolute;
@@ -119,10 +145,12 @@ header{
 }
 .tree1{
     background: linear-gradient(105deg, var(--purp2), var(--blue1) 60%);
-    /*width: calc(var(--posTop) + var(--stickyTop));*/
     width: 100%;
-    aspect-ratio: 1 / 1;
     animation: sway 2s ease-in-out alternate infinite;
+}
+@keyframes sway{
+    0%      { clip-path: polygon(0% 101%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 89% 101%, 77% 101%, 69% 98%, 62% 98%, 51.5% 101%);}
+    100%    { clip-path: polygon(0% 101%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14.2%, 22.1% 11.1%, 23.2% 5.1%, 25.4% 0%, 26.4% 0%, 24.3% 5%, 24.1% 9.2%, 26.1% 8.4%, 31.7% 5.2%, 35.8% 4.4%, 40.2% 4.4%, 42.4% 2.2%,     44.5% 0%, 46% 0%, 42.4% 4.3%, 48% 5.5%, 54% 5.5%, 59% 5.6%, 66% 4.6%, 71% 3.6%, 75% 4.2%, 82% 6.7%, 81% 7.3%, 73% 5.7%, 69.5% 6.3%, 69% 6.7%, 73% 8.7%, 76% 9.7%, 81% 9.7%, 79% 10.7%, 74% 10.7%,     70% 9.2%, 67% 7.7%, 63% 6.6%, 58% 7.6%, 53% 7.5%, 49% 7.9%, 44% 7.4%, 35% 8.8%, 31% 10.3%, 28% 12.2%, 20% 19.1%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,     22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 89% 101%, 77% 101%, 69% 98%, 62% 98%, 51.5% 101%);}
 }
 .tree2{
     height: calc(var(--stickyHeight) + var(--stickyTop));
@@ -138,17 +166,33 @@ header{
     left: calc(100% - var(--stickyWidth) - var(--posRight));
     clip-path: polygon(67% 0%, 72% 11%, 74% 17%, 79% 43%, 85% 69%, 88% 73%, 92% 85%, 96% 90%, 100% 93%, 100% 100%, 97% 97%, 93% 91%, 90% 87%, 86% 80%, 86% 84%, 87.5% 92.5%, 89% 96%, 92% 100%, 89% 100%, 87% 97%, 86% 92%, 84% 84%, 79% 64%, 74% 48%, 66% 33%, 61% 24%, 54% 13%, 39.5% 0%);
 }
-.tree2Root{
-    height: var(--coverBottom);
+.treeRoot2Parent{
+    height: calc(var(--coverBottom) + 0px);
     width: 100%;
-    background: linear-gradient(91deg, var(--purp2)-8%, var(--blue1) 50%);
     position: relative;
+    background-color: var(--purp1);
+}
+.tree2Root, .tree2RootOpaque{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
     clip-path: polygon(9.2% -1%, 12% 5%, 14% 15%, 16% 21%, 19% 23%, 23% 23%, 25% 18%, 25% 14%, 24% 12%, 23% 13.5%, 23.2% 16%, 22% 14%, 22% 12%, 23% 10.7%, 24.8% 11%, 26% 14%, 26% 17%, 25% 21%, 23.5% 24%, 21% 25%, 18% 24%, 20% 26%, 21% 30%, 20% 35%, 20% 40%, 23% 44%, 26% 43%, 29% 40%, 32% 34%, 36% 29%, 40% 28%, 44% 29%, 48% 32%, 52% 29%, 56% 23%, 55% 26%, 51% 31%, 48% 33%, 46% 32%, 48% 35%, 50% 39%, 53% 42%, 55% 40%, 57.5% 37%, 59% 33%, 62% 29%, 65% 30%, 66.5% 33%, 66.5% 35%, 65% 37%, 63.5% 36%, 63% 33%, 64% 35%, 65% 36%, 66% 34%, 65% 31%, 62% 30%, 60% 33%, 59% 36%, 57% 39%, 54% 42.5%, 52% 43%, 50% 42%, 48% 39%, 46.5% 35%, 44% 32%, 41% 31%, 38% 31%, 35% 34%, 33% 38%, 30% 43%, 26% 47%, 21% 47%, 19% 44%, 18% 41%, 17.5% 35%, 16% 39%, 13% 43%, 12% 47%, 11% 52%, 10% 57%, 7% 62%, 4% 64%, 2% 66%, 0% 71%, 0% 67%, 1% 65%, 4% 62%, 6% 60%, 8% 57%, 9% 51%, 10% 46%, 7% 49%, 4% 53%, 2% 55%, 0% 56%, 0% 54%, 2% 53%, 4% 51%, 6% 48%, 8% 45%, 10% 43%, 13% 39%, 15% 35%, 17% 32%, 18% 30%, 18% 28%, 17% 26%, 14.5% 25%, 13% 22%, 12% 17%, 11% 10%, 9.8% 5%, 7% -1%);
 }
-@keyframes sway{
-    0%      { clip-path: polygon(0% 101%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14%, 22% 11%, 23% 5%, 25% 0%, 26% 0%, 24% 5%, 24% 9%, 26% 8%, 31% 5%, 35% 4%, 40% 4%, 42% 2%,     44% 0%, 45.5% 0%, 42% 4%, 48% 5%, 54% 5%, 59% 5%, 66% 4%, 71% 3%, 75% 3.5%, 82% 6%, 81% 6.5%, 73% 5%, 69.5% 5.5%, 69% 6%, 73% 8%, 76% 9%, 81% 9%, 79% 10%, 74% 10%,     70% 8.5%, 67% 7%, 63% 6%, 58% 7%, 53% 7%, 49% 7.5%, 44% 7%, 35% 8.5%, 31% 10%, 28% 12%, 20% 19%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,  22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 89% 101%, 77% 101%, 69% 98%, 62% 98%, 51.5% 101%);}
-    100%    { clip-path: polygon(0% 101%, 0% 63%, 2% 55%, 2% 46%, 0% 34%, 0% 13%, 1% 9%, 1.5% 3%, 0.5% 0%, 0% 0%, 2% 0%, 3% 5%, 3% 9%, 4% 12%, 6% 9%, 7% 5%, 9% 1%, 11% 0%,     13% 0%, 11% 1%, 9% 5%, 8% 11%, 10% 14%, 14% 15%, 19% 14.2%, 22.1% 11.1%, 23.2% 5.1%, 25.4% 0%, 26.4% 0%, 24.3% 5%, 24.1% 9.2%, 26.1% 8.4%, 31.7% 5.2%, 35.8% 4.4%, 40.2% 4.4%, 42.4% 2.2%,     44.5% 0%, 46% 0%, 42.4% 4.3%, 48% 5.5%, 54% 5.5%, 59% 5.6%, 66% 4.6%, 71% 3.6%, 75% 4.2%, 82% 6.7%, 81% 7.3%, 73% 5.7%, 69.5% 6.3%, 69% 6.7%, 73% 8.7%, 76% 9.7%, 81% 9.7%, 79% 10.7%, 74% 10.7%,     70% 9.2%, 67% 7.7%, 63% 6.6%, 58% 7.6%, 53% 7.5%, 49% 7.9%, 44% 7.4%, 35% 8.8%, 31% 10.3%, 28% 12.2%, 20% 19.1%, 12% 22%, 11% 24%, 11% 37%, 13% 44%, 15% 46%,     17% 51%, 17% 57%, 16% 57%, 16% 51%, 14% 47%, 12.5% 46.5%, 11% 47.6%, 10% 52%, 11% 55%, 13% 58%, 15% 58%, 16% 57%, 17% 57%, 15% 62%, 14% 67%, 13% 75%, 14% 82%, 17% 91%,     22% 96%, 32% 98%, 43% 98%, 56% 96%, 63% 94.5%, 70% 94.5%, 76% 96%, 83% 99%, 89% 101%, 77% 101%, 69% 98%, 62% 98%, 51.5% 101%);}
+.tree2Root{
+    background: linear-gradient(91deg, var(--purp2)-8%, var(--blue1) 50%);
+    transition: opacity 4s;
 }
+.tree2RootOpaque{
+    background: linear-gradient(317deg, #280a4a40 75%, var(--purp2) 95%),
+                linear-gradient(140deg, var(--blue1) 5%, transparent 20%);
+}
+.tree2Root:hover{
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+/*#endregion ---------------------------*/
+
+
 /*#region ---------------- Start Stickies -----------------*/
 
 /* -------------------- Read Me 1: usage --------------------
@@ -185,9 +229,9 @@ scroll over --coverBottom.  (if that's what you want, start content 8 pixels hig
 */
 
 :root{ /* These do need to be available to other content for screen width adjustments etc. */
-    --posTop: 150vh;   /* Top position, wherever you want (but lower than stickyTop) */
+    --posTop: 150vh;   /* Starting screen position, wherever you want (from top of PAGE) */
     --posRight: 5vw;     /* Right position, wherever you want, but has to be in px or vw (#leftNotRight - change name) */
-    --stickyTop: 8.5vh;    /* height it'll stop at (from top of screen) */
+    --stickyTop: 8.5vh;    /* height it'll stop at (from top of SCREEN) */
     --stickyHeight: 37vw; /* height of content box */
     --stickyWidth: 37vw;  /* width, but note that I've used vw for both - I want it square */
     /* more variables in the uneditable section - they're calculated */
@@ -206,7 +250,7 @@ scroll over --coverBottom.  (if that's what you want, start content 8 pixels hig
     /* background: url(./images/backgroundGoesHere.jpg) left 0px top var(--stickyTop)/100vw var(--stickyHeight) fixed; */    /* static background    */
     /* background: url(./images/backgroundGoesHere.jpg) left 0px top var(--posTop)/100vw var(--slider3) absolute; */    /* scrolling background */
 }
-article.slider1{
+article.slider1{ 
     background:url(./images/treeRoad.jpg) right var(--posRight) top var(--stickyTop)/var(--stickyHeight) var(--stickyWidth);
     background-attachment: fixed; 
 }
@@ -214,11 +258,21 @@ article.slider2{
     background:url(./images/graffiti.gif) ;
     background-size: 100%;
 }
-.slider2 div{ 
+.slider1 .slider1Left{
     display: inline-block;
-    position: relative;
-    left: -265px;
-    bottom: -1000px;
+    position: absolute;
+    width: var(--stickyWidth);
+    right: calc(var(--stickyWidth) + 20px);
+    bottom: 50%;
+    transform: translateY(-50%);
+}
+.slider2 div, .slider1 .slider1DownLeft{ 
+    display: inline-block;
+    position: absolute;
+    width: var(--stickyWidth);
+    right: calc(var(--stickyWidth) + 20px);
+    bottom: calc(-50% - 500px);
+    transform: translateY(-50%);
 }
 article.slider3{
     background:url(./images/MachuPichu.jpg);
@@ -228,8 +282,8 @@ article.slider3{
 /* #region  ------- Open if you dare - (stickies uneditable) ----- */
 /* The ONLY thing you may need to edit are to remove width and left in the top two rules */
 :root{ 
-    --stickyBottom: calc(var(--stickyTop) + var(--stickyHeight)); /* Bottom of content, used for --coverBottom that covers the content scrolling up from the bottom */
-    --coverBottom: 1000px; /* see notes on scalability */
+    --stickyBottom: calc(var(--stickyTop) + var(--stickyHeight)); /* Bottom of content (from top of SCREEN), used for --coverBottom that covers the content scrolling up from the bottom */
+    --coverBottom: calc(100vh - var(--stickyTop)); /* see notes on scalability */
     --slider1: calc(var(--stickyHeight) + 500px);   /*| These are the content size plus about 500px to make each section */
     --slider2: calc(var(--slider1) * 2);            /*| stay still for a while so you don't scroll past accidentally */
     --slider3: calc(var(--slider1) * 3.5);          /*| If you want the last slider to scroll up, rather than be scrolled over,
@@ -294,7 +348,8 @@ article.slider3{
 }
 .slider1, .slider2, .slider3{
     position: sticky;
-    height: var(--stickyHeight); /* They don't HAVE to be the same size, but it's easier */
+    height: var(--stickyHeight); /* They don't HAVE to be the same size, but it looks better and is more practical */
+    text-align: right;
 }
 .sliderContainer1{
     height: var(--slider1);
@@ -306,7 +361,7 @@ article.slider3{
     height: var(--slider3);
 }
 .coverContainer{
-    height: calc(var(--slider1) * 3);
+    height: calc(var(--lastSlider) - var(--coverBottom));/*calc(var(--slider1) * 3);*/
 }
 .coverContainer2{
     height: var(--lastSlider);
