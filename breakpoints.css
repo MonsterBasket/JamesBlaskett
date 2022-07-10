@@ -98,6 +98,12 @@
     width: 80%;
     left: 10%;
   }
+  .blogButton, div.blogButton + div {
+    animation: none;
+    transform: rotate(210deg);
+    top: 6.5%;
+    left: 53%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -131,7 +137,6 @@
     transform: scale(0.5);
   }
   .blogButton, div.blogButton + div {
-    animation: none;
     transform: scale(0.5) rotate(210deg);
     top: 1%;
     left: 53%;
