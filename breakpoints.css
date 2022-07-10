@@ -1,27 +1,139 @@
+@media only screen and (max-width: 1510px){
+  .intro{
+    width: 70%;
+  }
+}
 @media only screen and (max-width: 1200px) {
+  .intro{
+    width: 80%;
+    left: 8%;
+  }
+  .contactButton, .contactButton + div{
+    top:73px;
+    left: -1%;
+  }
+  .workButton, .workButton + div{
+    top:82px;
+    left: 8%;
+  }
+  :root{
+    --stickyWidth: 50vw;
+    --stickyHeight: 50vw;
+  }
+  .tree2{
+    width: 57%;
+  }
+  .tree1Root{
+    width: 40%;
+    left: 59%;
+  }
 
 }
 
 @media only screen and (max-width: 1024px) {
+  .intro{
+    top: 2%;
+  }
+  .contactButton, .contactButton + div{
+    top: 577px;
+    left: 5%;
+  }
+  .workButton, .workButton + div{
+    top: 28px;
+    left: 5%;
+  }
+  .blogButton, .blogButton + div{
+    left: 62%;
+  }
+  .slider1 .slider1DownLeft{
+    width: 60%;
+  }
+  .outro{
+    width: 60%;
+  }
+}
 
+@media only screen and (max-width: 900px) {
+  .intro{
+    top: 15%;
+  }
+  .workButton, .workButton + div{
+    top: 185px;
+  }
+  .contactButton, .contactButton + div{
+    top: 73px;
+    left: 18%;
+  }
+  .blogButton, .blogButton + div{
+    top: 9%;
+  }
+  .outro{
+    top:80%;
+    left: 18%;
+  }
+  
 }
 
 @media only screen and (max-width: 768px) {
-
+  :root{
+    --stickyWidth: 90vw;
+    --stickyHeight: 90vw;
+  }
+  .slider1 .slider1Left{
+    right: auto;
+    left: -4vw;
+    color: white;
+    font-size: 2em;
+  }
+  .slider1 .slider1DownLeft{
+    right: 4vw;
+    color: white;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 3px black, -1px -1px 3px black;
+  }
+  .slider2 div{
+    display: none;  
+  }
+  .outro{
+    width: 80%;
+    left: 10%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-
-}
-
-@media only screen and (max-width: 480px) {
-
-}
-
-@media print {
-
-  *, h1, h2, h3, h4, h5, h6, p, a, section, div, table {
-    color: black;
+  .intro{
+    width: 90%;
+    left: 4%;
+    top: 12%
   }
-  
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    transform: scale(.5) translate(-96px, -28px);
+    width: 126%
+  }
+  h3{
+    margin-block-start: 1em;
+    font-size: 20px;
+  }
+  .intro p{
+    font-size: 14px;
+  }
+  .contactButton, .contactButton + div{
+    top: 72px;
+    left: -1%;
+    transform: scale(0.5);
+  }
+  .workButton, .workButton + div{
+    top:-62px;
+    left: 18%;
+    transform: scale(0.5);
+  }
+  .blogButton, .blogButton + div {
+    animation: none;
+    transform: scale(0.5) rotate(210deg);
+    top: 1%;
+    left: 53%;
+  }
 }
