@@ -74,7 +74,7 @@
   
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px), (-webkit-min-device-pixel-ratio: 4) {
   :root{
     --stickyWidth: 90vw;
     --stickyHeight: 90vw;
@@ -130,7 +130,7 @@
     left: 18%;
     transform: scale(0.5);
   }
-  .blogButton, .blogButton + div {
+  .blogButton, div.blogButton + div {
     animation: none;
     transform: scale(0.5) rotate(210deg);
     top: 1%;
