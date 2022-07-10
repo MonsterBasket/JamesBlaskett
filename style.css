@@ -525,7 +525,7 @@ animation: trigger 0s forwards;
 /*#endregion ------------ end redtrail -----------------*/
 
 /*#region ---- buttons for blog: yep, totally had to steal them, mine are crap anyway :( ---- */
-
+/* On the plus side, at least I was able to adapt them to the size, font, position and colour scheme I needed within a few minutes! */
 
   /* Layout Styling */
   
@@ -601,3 +601,4 @@ animation: trigger 0s forwards;
   #button-3:hover a {
     color: #2D3142;
   }
+  /*#endregion -----------------
