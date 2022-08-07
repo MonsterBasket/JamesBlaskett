@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./breakpoints.css">
+    <title>Blog - James Montero-Blaskett</title>
+</head>
+<body style="height:100%;">
+    <header style="position:fixed;">
+            <div class="treeParent"><div class="tree1"></div></div>
+            <nav class="container">
+                <div class="button" id="button-3" title="The things I've said">
+                    <div id="circle"></div>
+                    <a href="./blog1.html">PREVIOUS</a>
+                  </div>
+                  <div class="button" id="button-3" title="Where I live">
+                    <div id="circle"></div>
+                    <a href="./index.html">HOME</a>
+                  </div>
+                  <div class="button" id="button-3" title="The things I'm yet to say, unless of course you're just living in the past and I HAVE already said them, but then, why are they not listed under 'the things I've said?'. Well, to paraphrase the Big Bang Theory, that's something I previously had will have had talked about in one of my other blogs.">
+                    <div id="circle"></div>
+                    <a href="./blog.html">NEXT</a>
+                  </div>
+            </nav>
+        </header>    
+
+            <div class="intro blogIntro">
+        <h1>The Things I Say</h1>
+        <h3>~ Phase 1 ~</h3>
+        <p>
+          Or the second mile? I dunno, I think I’m just still a little miffed that “Phase 0” was as hard as it was, it doesn’t even have a real number! Anyway, I meant what I said after the first mile, and I took great pains to abide by my new rule. I do, however, have a heap of new bookmarks to refer back to…
+          <br><br>
+          Before I talk about how I went, I do want to rant about a few of the things I’ve learnt. Side note: I’m still not entirely sure who my target audience is with these blogs (as I’m not exactly writing them by choice!), so I will try and write in language that anyone can understand. This phase was all about JavaScript. History Lesson: <a href="https://letmegooglethat.com/?q=what+is+Javascript">JavaScript</a> was developed in 1995 to add functionality to web pages. Before that, web pages were very much “read only”. But 1995 is a long time ago, I mean, the World Wide Web (www. (history lesson 2: the www is not the internet, it exists ON the internet, but is not the same thing. For most people, this clarification is totally irrelevant)) is only a few years older (1989), so you’d have to assume that JavaScript is a pretty basic standard now right?
+          <br><br>
+          Wrong.
+          <br><br>
+          Well, <a href="https://www.facebook.com/watch/?v=1147144275368796">mostly right</a>, but it’s complicated. Even though JavaScript has been around for 27 years, it’s also constantly being worked on and added to, so there are things you can do with JavaScript today that you couldn’t do in 1995. Also, as there are many different web browsers (Google Chrome, Firefox, Internet Explorer etc.), their support for the latest features of JavaScript (and other common web-design features) are <a href="https://caniuse.com/?search=JavaScript">inconsistent</a>. This means that whenever you’re designing, well, ANYTHING for the internet, you can’t just get it working on your computer and be done with it. This is certainly something I learned about the hard way in Phase 0, I designed a webpage that I knew was technically a bit unique, but still got it looking and working just how I wanted it to… on MY computer. Loading it up on different sized monitors broke the layout really badly, and god forbid you wanted to view it on a phone.
+          <br><br>
+          But I guess that’s just something that needs to be learnt, unless you’re making a quite basic static page (no-interaction), there are always going to be trade-offs (or a lot of extra work to get around them).
+          <br><br>
+          Overall though, I really like JavaScript (or maybe I just like programming in general). There’s so much about it that just makes sense to me (and even the bits I don’t understand at first seem to be that way for a logical reason). For instance, JavaScript is read (by the computer) top down, left to right, and so for anyone reading this, that’s how you’re used to reading things. That (and some technical reasons that I couldn’t begin to explain) mean that context becomes incredibly important. Every line of code you write only has access to the information that has already been read or is contextually relevant. I just find that such an interesting concept for a computer; as humans we intrinsically understand context. When I say I’m writing this blog while sitting here on my couch, those that know that I live in Melbourne don’t need me to say “on my couch, at home, in Melbourne, Australia, Earth, The Milky Way”, they can infer all of that from just “on my couch”. But, now that I HAVE specifically said all that, ANYONE that reads this (including aliens) have a much more specific idea of what I mean when I say “on my couch”. And having said all that, even if you didn’t know I lived in Melbourne (or on Earth), that information is completely irrelevant for you to read and understand what I’m saying. So I repeat, I just find it really interesting that context (as badly as I’ve explained it) exists within JavaScript.
+          <br><br>
+          The other thing about it being read from the top down is that you can drastically break your program simply by re-ordering things. If you think about it, that makes sense right? Right now, if I made a reference to APIs, any non-programmer reading this wouldn’t know what I’m talking about, and would have an “error” reading my blog. But that’s just because I don’t mention and explain what an API is until a couple of paragraphs down. JavaScript is the same, it makes perfect sense both to humans and to JavaScript to say “let A = 2, let B = A*2, let C = A + B. You don’t have to be a programmer nor particularly good at math to know that C = 6. If I swap those around into any other order, us humans can read backwards and forwards to join the dots, but JavaScript just says “hang on, let C = A + B? I don’t know what either A or B are, so I don’t know what you’re talking about”. Most of the time this ordering is straight forward and simply logical, but other times it turns into a puzzle of “how do I pass the data in A over to C without effecting B”. I like puzzles.
+          <br><br>
+          Okay, last point about the whole top down thing. Some code can take longer to process than others, especially things like requesting data from another website (or an API, and I promise, I’ll explain what that is soon!). If you were reading a book and you read a sentence that made you stop and think, you’d do exactly that. Stop and think. But because JavaScript is all neatly tucked away working in the back-ground of a webpage, you don’t want it to stop and think, because then the web-page stops working (seriously, JavaScript stopping to think will make web-pages completely freeze). That’s where “asynchronous” programming comes into play, you’re basically saying to the computer “yeah, cool man, I don’t care that you need to have a little think about that, just put it aside and continue on with everything else, then come back to it when you’ve worked it out”. In fact, that’s exactly what asynchronous programming is doing. So yeah, just something else I found really interesting about JavaScript, it’s all written top down, left to right just as English is, but then there are these little exceptions that come into play.
+          <br><br>
+          As promised, here’s a paragraph where I talk about APIs and also how I found phase 1. Phase 1 went for four weeks, I did manage to finish all the pre assignment work in three, leaving me a little over a week to work on the major project this time. I had a few ideas already at hand for what I could do for the project, I’d understood the work pretty well, and I had 8 or 9 days up my sleeve. Life was good and I was feeling pretty calm, but there was a catch. We had to implement an API (plus, you know, everything else we’ve learnt this month). API stands for Application Programming Interface, and in layman’s terms (as far as I understand it) it’s basically just the way that programs or web apps can be made to communicate with each other (that explanation wasn’t worth the wait, huh?).
+          <br><br>
+          I’ll circle back to how APIs work because I think it’s interesting, but
+          <br><br>
+          I spent pretty much the whole weekend looking for interesting APIs that I could do something fun with, and trying to work out how I could integrate them into a web app that wouldn’t be useless or boring. By the end of the weekend, I was right back to the first idea I’d had, which is a <a href="https://monsterbasket.github.io/TypingGame/">Typing Game</a> (what do you think?). And funnily enough, once I really focused on what I’d need for that specific goal, my search for an appropriate API became much easier. Perhaps it was just the paradox of choice, there are a lot of pointless APIs out there, but there are also some really interesting ones (NASA has some great options, including open access to god knows how many <a href="https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG">photos</a>).
+          <br><br>
+          The project itself went really quite well. Before I even started I already had a pretty good idea how to handle the majority of the technical challenges. I started out by being very organised, writing a list of features that I needed to implement to get it working, as well as optional stretch goals. When I was writing my program I tried very hard (mostly successfully) to stay on track and work through each element in order of priority. There are a couple of features that didn’t quite make the cut-off which is disappointing, but in the end I think I ended up with a fairly well polished product. To be honest, the reason why this is a Sunday night blog instead of a Friday day-time blog is because of that level of polish. Yes, I am often a perfectionist and will spend far too long chasing down information on how to fix minor issues.
+          <br><br>
+          As happy as I am with the final project and how much detail I managed to put into getting the little things right, I still managed to discover 3 or 4 bugs while recording the demo video (which is another assignment requirement). So frustrating. But, those bugs have all been handled now and I feel much more comfortable, and much less stressed than at the end of phase 0 (but I’m still taking tomorrow off!).
+          <br><br><br><br><br><br><br><br>
+
+        </p>        
+    </div>
+
+</body>
+</html>
