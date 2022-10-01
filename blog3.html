@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./breakpoints.css">
+    <title>Blog - James Montero-Blaskett</title>
+</head>
+<body style="height:100%;">
+    <header style="position:fixed;">
+            <div class="treeParent"><div class="tree1"></div></div>
+            <nav class="container">
+                <div class="button" id="button-3" title="The things I've said">
+                    <div id="circle"></div>
+                    <a href="./blog2.html">PREVIOUS</a>
+                  </div>
+                  <div class="button" id="button-3" title="Where I live">
+                    <div id="circle"></div>
+                    <a href="./index.html">HOME</a>
+                  </div>
+                  <div class="button" id="button-3" title="The things I'm yet to say, unless of course you're just living in the past and I HAVE already said them, but then, why are they not listed under 'the things I've said?'. Well, to paraphrase the Big Bang Theory, that's something I previously had will have had talked about in one of my other blogs.">
+                    <div id="circle"></div>
+                    <a href="./blog4.html">NEXT</a>
+                  </div>
+            </nav>
+        </header>    
+
+            <div class="intro blogIntro">
+
+        <h1>My React-ion</h1>
+        <h3>~ Phase 2 ~</h3>
+        
+        <p>I’m going to cut to the chase with this blog and assume you as a reader know about JavaScript and React, and that has nothing to do with the fact that it’s 2am and this was due at midnight. NOTHING. But let’s face it, probably the only person that reads this is my teacher because he has to, and he definitely knows what he’s on about.</p>
+        <p>Okay, maybe a <em>little</em> history. The way I explain it to anyone that asks about the course I’m doing is this:
+          <br>HTML is the structure of a webpage: If you’re on a computer and not on a mobile device right click anywhere on the page and press inspect. A window should pop up somewhere with just a whole bunch of mess in it (if it’s too scary, press F12 and it will disappear). In the tab labelled Elements, that’s the HTML for this page, if you have a bit of a poke around in there and click on some of those tiny arrows you’ll be able to find all of this writing nested away in what are called HTML “tags”.</p>
+        <p>Go ahead and try it I promise you can’t break anything! You can go ahead and click on things in there and press delete to see them disappear from the page, but just hit refresh and you’ll be right back here!</p>
+        <p>Welcome back :)</p>
+        <p>By the way, have you ever been trying to read an article online and a window pops up that won’t let you read any more until you sign-up/donate/join their cult? Right click, inspect, delete!</p>
+        <p>So anyway, some of these tags can be put inside other tags, and the way these are ordered and structured determines, more or less, the order in which a webpage is displayed. But a website with just HTML is seriously ugly.</p>
+        <p>Queue CSS, or Cascading Style Sheets. I don’t know why these sheets are cascading, but style is what this is all about. CSS is where we get our colours, our fonts and font sizes. All of those tags you saw before can be targeted with CSS as specifically or broadly as you want. You can add ids and class names to them and add tags even around just a single letter or word to specifically target it.</p>
+        <p>For example, if you right click → <strong>here</strong> ← and press inspect, you’ll see that the word “here” has been encapsulated in a “strong” tag. This ability to target the smallest elements makes CSS quite powerful, but CSS is also used to <em>position </em>those tags around the page.</p>
+        <blockquote>
+          <p>Without CSS, there’d be no way to indent this text like this.</p>
+        </blockquote>
+        <p>A blog website isn’t the greatest place to showcase CSS, so just trust me. Every website you visit uses CSS to structure their page.</p>
+        <p>So if HTML is the structure and CSS is the style, JavaScript is the functionality and interactivity. You can actually do quite a lot without JavaScript, but anything dynamic or interactive without it is quite often a work-around. There are some very clever people out there that can do amazing things with CSS to make things appear interactive, but at a certain point even they need JavaScript.</p>
+        <p>JavaScript is a programming language (HTML and CSS are not), which basically means it’s a set of instructions that tell the computer what to do. You can use JavaScript to dynamically create, change or delete HTML and CSS, so the range of things you can achieve when you’re familiar with it are endless.</p>
+        <p>This latest phase of my education was about React though. React is a programming tool built in/on/with JavaScript that is another way of interacting with HTML. With just HTML, CSS and JavaScript, you can be selective and use just a little JavaScript here, there or everywhere, but React handles ALL of the HTML for you.</p>
+        <p>At first, I saw it as a sort of shortcut and I suspect that triggered a bit of apathy in me towards it. I quickly saw the potential it held, but I just seriously struggled to really get into it. I don’t want this blog to turn into a rant about my mental health, but the looming project deadline and my constant perception that I wasn’t far enough along in this subject did trigger a bit of a downward spiral. As such, there are a couple of features of React that I don’t understand as well as I possible should, but here’s what I do know.</p>
+        <p>Coding like crazy for a few days has helped me snap out of my mood and I’m feeling a lot better, despite not getting my project anywhere near the state I had initially hoped and planned. React forces you to split your code up into smaller chunks called components, and the way information is passed between them is sometimes a little hard to wrap your head around. As I type this I’m feeling even less sure of myself, but if you picture your program as the roots of a tree, with the point where it comes out of the ground as the webpage itself and the different forking roots as your components, it goes a little something like this. Information and functions (actions) can be passed downwards and nothing can be passed sideways or upwards, but the functions that are passed down can be called (initiated) at the bottom with information passed in that ends up at the top, and you can wrap components together so they share the same data which isn’t really passing it sideways, but more like throwing it up in the air and then catching it over there…</p>
+        <p>And just when I thought I finally had my head around this, I made a couple of buttons that had to pass data downwards. But buttons can only be called where they’re made, so that wasn’t going to work to bring data back up from below. But wait, do I need that data back? No, I don’t, I just need the lower component to update itself to <em>display</em> that information. Okay, so that should work… but, why isn’t it working? After several restructures and attempts, I discovered I’d misunderstood something called “custom hooks”, and hadn’t been using them at all even though I thought I had. So the “component” that I was passing things down to was really just another function, which means I don’t have the ability to use some special React tools. So I restructured it, and turned it into a custom hook, except that one of the components I was using it in doesn’t <em>allow</em> you to use custom hooks the way I was using it, so I had to undo my restructure and turn it back into a function.</p>
+        <p>If you’re getting frustrated reading all this back and forth, imagine how I felt coding it all! Eventually I discovered the reason my bottom function wasn’t updating from the information being passed to it from my component was because <strong>I wasn’t even passing it the information!</strong></p>
+        <p>There were a few other little mistakes I made along the way, and one not so little mistake where I wrote quite a lengthy component to display my recipes (my app is a to-do list and meal planner with a calendar), when really it should very definitely have been two components. This meant that later on when I managed to add the recipes into the calendar and to-do list, I had no ready-made way to easily go to those recipes. For instance, you can go to the calendar and see that I have breakfast lunch and dinner planned tomorrow, you can click on tomorrow’s date to see an image and the name of each meal (along with any other appointments or tasks due that day), but if you want to actually look at the recipe to cook that meal? No, don’t be silly, you can’t do that!</p>
+        <p>Because I’d made my recipe display component as one single component, I would now need to “abstract” half that component with surgical precision into a second component, and then carefully restructure the original component with references to the new component. Then, and only then would I be able to reference this component in the other areas to of my app.</p>
+        <p>Planning is definitely an important skill with React. I did actually take the time to plan it out on paper (real paper, with a pen!) to work out what components I’d need to write and how they’d all need to be positioned for proper flow of information, but it seems I could have spent a little longer on that stage!</p><p id="e0eb" class="pw-post-body-paragraph zh zi yl tl b zj zk vk zl zm zn vn zo zp zq zr zs zt zu zv zw zx zy zz aba abb qo by" data-selectable-paragraph="">Having said all this, realising my mistakes and working through them (and in that one case just realising what I should have done differently) has rekindled my joy of programming that my emotional downslide had smothered. I remarked to my teacher that I haven’t seen anything in React that I couldn’t do with JavaScript, to which he replied (and I’m heavily paraphrasing) “no shit Sherlock, it IS JavaScript”. React at it’s surface is just a confusing, modular method of making a website. There IS nothing I’ve done in my React project that I couldn’t have done without React, but I’ve dynamically created a calendar and dynamically populated it with user created tasks and meals. Doing that without React is possible, but it’d be much longer, messier, harder to read code (and my code ain’t that easy to read!).</p><p id="8e33" class="pw-post-body-paragraph zh zi yl tl b zj zk vk zl zm zn vn zo zp zq zr zs zt zu zv zw zx zy zz aba abb qo by" data-selectable-paragraph="">So now that I’ve gotten down and dirty with React I can definitely see the advantage to it’s modular nature, especially with dynamic content. I would definitely use React again and look forward to getting more practice with it, but I wouldn’t use it for <em class="abc">everything</em>. It’s a really great tool, but as with all tools there’s a time and a place for it. Except hammers, hammers work on everything.</p><p id="cd14" class="pw-post-body-paragraph zh zi yl tl b zj zk vk zl zm zn vn zo zp zq zr zs zt zu zv zw zx zy zz aba abb qo by" data-selectable-paragraph="">To my teacher, sorry for all the stuff I explained after saying I was going to talk as if whoever is reading this already knows about JavaScript and React. To anyone else, sorry for all the times I didn’t.</p>
+
+          <br><br><br><br><br><br><br><br>
+
+    </div>
+
+</body>
+</html>
