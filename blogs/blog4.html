@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="../breakpoints.css">
+  <title>Blog - James Montero-Blaskett</title>
+</head>
+<body style="height:100%;">
+  <header style="position:fixed;">
+    <div class="treeParent"><div class="tree1"></div></div>
+    <nav class="container">
+      <div class="button" id="button-3" title="The things I've said">
+        <div id="circle"></div>
+        <a href="./blog3.html">PREVIOUS</a>
+      </div>
+      <div class="button" id="button-3" title="Where I live">
+        <div id="circle"></div>
+        <a href="../index.html">HOME</a>
+      </div>
+      <div class="button" id="button-3" title="The things I'm yet to say, unless of course you're just living in the past and I HAVE already said them, but then, why are they not listed under 'the things I've said?'. Well, to paraphrase the Big Bang Theory, that's something I previously had will have had talked about in one of my other blogs.">
+        <div id="circle"></div>
+        <a href="./blog.html">NEXT</a>
+      </div>
+    </nav>
+  </header>    
+
+  <div class="intro blogIntro">
+
+    <h1>Ruby Ruby Ruby Ruby </h1>
+    <h3>~ Phase 3 ~</h3>
+    
+    <p>Ahhh ahhh ahhh ahhh ahhh ahhhhhhh.</p>
+    <p>Good news bad news for my phase 3 project at Academy Xi; I’m typing this on a Saturday instead of the usual wee hours of Monday morning, but I’m sick as a dog.</p>
+    <p>Despite my current state of pain and congestion from the neck up, I’ve really enjoyed working on my Ruby assignment and trying to incorporate everything we’ve learned in the 4 weeks prior. Ruby is considered to be quite an easy language to learn because of it’s simplicity, and I’ve certainly found that to be true.</p>
+    <blockquote>
+      <p>A dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write</p>
+    </blockquote>
+    <p>That quote is Ruby’s own description of Ruby. There’s a lot of emphasis on being able to write code that’s quite similar to just writing what you want to do in English (comparative to other languages at least), so I was amused to be reminded of that when I wrote my attack method (context: I created a battleship game), I literally wrote “player.attack enemy” and “enemy.attack player”. It’s not ALL quite as simple as that, but it really is a very straight-forward language.</p>
+    <figure><img style="width: 95%" src="./battleship.png" alt="Battleship game"><p>Text only Battleship</p></figure>
+    <p>For this project I tried really hard to focus on good practices which are a sort of standard for writing readable, expandable and maintainable code. That was quite an interesting challenge, because just as I tend to ramble in my blogs, I do the same in my programming; writing very long methods that do too much. A method, or function, is a section of code that does some calculations or data manipulation etc. and returns a value. Or at least, that’s what a pure function does.</p>
+    <p>There’s a school of thought that says that you should use pure functions as often as possible: copy data rather than altering it, always return a value in the same format, only do one thing, don’t cause side-effects. While I understand this concept to a certain extent, I believe, as with all standards in programming and indeed life, that it should be applied with a little common sense.</p>
+    <p>Side-effects are absolutely necessary in programming, and programs wouldn’t exist without them. This is because a side-effect is when a method actually <em>does something</em> aside from just returning a value. Sure, you can dissect your program and split it up into a thousand little modular pure functions, but eventually you’re going to want to actually do something with all those values. Most of the things you want your program to actually <em>do</em> are side-effects. Printing to the screen, retrieving or saving data, or otherwise changing any other part of your program are all side-effects.</p>
+    <p>But, and this is where you can see the reasoning, side-effects, as you’d imagine, can be unpredictable. Pure functions are totally predictable, and if anything is wrong with them, it’s easy to know where to look. So even though I’m a big fan of side-effects, if you don’t keep it in the forefront of your mind it is easy to start writing functions that call functions that call functions… That’s when your debugging can really get out of control, fixing one thing breaks another etc. etc.</p>
+    <p>Something that’s not quite as taboo as the side-effect / pure function discussion is single responsibility. The idea that a method should only do one thing. This is something that, again, I haven’t been the best at in the past, but makes a lot of sense. Breaking your functions down into smaller chunks so that each method is only responsible for one thing actually has a few advantages. Firstly, if something breaks, it’s generally easier to find where to look. Smaller functions are (normally) easier to read, fix and maintain. It also makes it easier to expand your code later as you’ve already got that separation of responsibility, you generally need to alter less code to add functionality.</p>
+    <p>The other thing I’ve really tried to keep in mind with this project is avoiding code “smells”. It’s said that any method longer than 10, or class longer than 100 lines is a smell, i.e. an indicator that you’re not writing efficient code and you should refactor. The same applies with writing the same code multiple times in different places.</p>
+    <figure><img style="width: 95%" src="./warnings.png" alt="A list of warnings on a function"><p>But I'm not always successful</p></figure>
+    <p>Keeping all of these concepts in mind has really helped me in writing my program. I definitely have my share of functions that don’t strictly abide by the rules (as seen above), but while in some cases it’s because I simply couldn’t find a way to make it any more succinct, in other cases it’s because I simply chose not to.</p>
+    <p>The whole purpose of all of these practices is to make the code easier to read, maintain and expand. So while breaking functions up into smaller bite-sized chunks is often helpful, sometimes a longer function is going to be easier to read rather than abstracting out portions or condensing your code just for the sake of it.</p>
+    <figure><img style="width: 95%" src="./shorter.png" alt="Two functions side by side, both do the same thing but one is much longer than the other"><p>Shorter is not always better! The end result of both of these functions is the same.</p></figure>
+    <p>Interestingly, I really only had one major challenge in this project, which was setting up ActiveRecord. I struggled with it for most of a day and then gave up and continued without it. After my teacher helped me set it up the next day, he explained that I wasn’t really trying to use it correctly anyway, and so I was better off without it. But as far as actually programming the game, I really just went from one task to the next without issue.</p>
+    <p>Whether that’s because of my focus on good practice, the experience I’ve gained over the past few months, the simplicity of the Ruby language or a combination of all of these I’ll never know, but it did make it enjoyable. At it’s core, programming is about problem solving. Sure you have to learn the syntax first, and the more experience you get the more tricks you have up your sleeve, but once you pass the hurdle of knowing the syntax, the rest is just working out how to manipulate the data to get the desired outcome. I love problem solving, my wife has commented several times on this; sometimes I’ll see something that to most people is just random, but I’ll just kinda disappear into my head trying to figure out how it works.</p>
+    <p>That’s why this project has been so enjoyable to me, it’s just been a really nice progression of problems to solve and steady progress. Always knowing what I was working on and what my next goal was has helped to keep me interested and motivated too.</p>
+    <br><br><br><br><br><br><br><br>
+
+  </div>
+
+</body>
+</html>
